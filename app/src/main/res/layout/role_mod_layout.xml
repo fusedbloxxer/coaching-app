@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.faculty.fusedbloxxer.coachingapp.home.roles.RoleModFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/role"
+                android:textAppearance="@style/ModTitle"
+                app:layout_constraintBottom_toTopOf="@+id/role_id_editText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/role_id_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="@string/role_id"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/role_description_editText"
+                app:layout_constraintEnd_toEndOf="@+id/role_description_editText"
+                app:layout_constraintStart_toStartOf="@+id/role_description_editText"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <EditText
+                android:id="@+id/role_description_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/description"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toTopOf="@+id/role_image_url_editText"
+                app:layout_constraintEnd_toEndOf="@+id/role_image_url_editText"
+                app:layout_constraintStart_toStartOf="@+id/role_image_url_editText"
+                app:layout_constraintTop_toBottomOf="@+id/role_id_editText" />
+
+            <EditText
+                android:id="@+id/role_image_url_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:ems="10"
+                android:hint="@string/image_url"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/cancel_button"
+                app:layout_constraintEnd_toEndOf="@+id/finish_button"
+                app:layout_constraintStart_toStartOf="@+id/cancel_button"
+                app:layout_constraintTop_toBottomOf="@+id/role_description_editText"
+                tools:ignore="TextFields" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:onClick="@{()->fragment.onCancel()}"
+                android:text="@string/anuleaza"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/finish_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/role_image_url_editText" />
+
+            <Button
+                android:id="@+id/finish_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->fragment.onAccept()}"
+                android:text="@string/accepta"
+                app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cancel_button"
+                app:layout_constraintTop_toTopOf="@+id/cancel_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

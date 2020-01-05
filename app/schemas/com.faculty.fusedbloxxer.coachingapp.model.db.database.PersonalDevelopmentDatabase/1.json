@@ -1,0 +1,723 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "136e10d41825d0f11e29d9af41aa20f2",
+    "entities": [
+      {
+        "tableName": "roluri",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`url_imagine` TEXT NOT NULL, `descriere` TEXT NOT NULL, `id_rol` TEXT NOT NULL, PRIMARY KEY(`id_rol`))",
+        "fields": [
+          {
+            "fieldPath": "urlImage",
+            "columnName": "url_imagine",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "descriere",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idRole",
+            "columnName": "id_rol",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_rol"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "sarcini",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`timp_estimat` INTEGER, `descriere` TEXT NOT NULL, `puncte_premiu` INTEGER, `titlu` TEXT NOT NULL, `id_sarcina` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "estimatedTime",
+            "columnName": "timp_estimat",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "descriere",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rewardPoints",
+            "columnName": "puncte_premiu",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "titlu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "id_sarcina",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_sarcina"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "istoric_sarcini",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`comentariu` TEXT, `evaluare_incredere` INTEGER, `id_sarcina` INTEGER NOT NULL, `data_completare` INTEGER NOT NULL, PRIMARY KEY(`id_sarcina`, `data_completare`), FOREIGN KEY(`id_sarcina`) REFERENCES `sarcini`(`id_sarcina`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "comment",
+            "columnName": "comentariu",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "confidenceRating",
+            "columnName": "evaluare_incredere",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "id_sarcina",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completionDate",
+            "columnName": "data_completare",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_sarcina",
+            "data_completare"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_istoric_sarcini_id_sarcina_data_completare",
+            "unique": true,
+            "columnNames": [
+              "id_sarcina",
+              "data_completare"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_istoric_sarcini_id_sarcina_data_completare` ON `${TABLE_NAME}` (`id_sarcina`, `data_completare`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sarcini",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_sarcina"
+            ],
+            "referencedColumns": [
+              "id_sarcina"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "utilizatori",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`parola` TEXT NOT NULL, `adresa_email` TEXT, `prenume` TEXT NOT NULL, `nume` TEXT NOT NULL, `nume_utilizator` TEXT NOT NULL, `id_rol` TEXT NOT NULL, PRIMARY KEY(`nume_utilizator`), FOREIGN KEY(`id_rol`) REFERENCES `roluri`(`id_rol`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "password",
+            "columnName": "parola",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "emailAddress",
+            "columnName": "adresa_email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "firstName",
+            "columnName": "prenume",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "nume",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "nume_utilizator",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "roleId",
+            "columnName": "id_rol",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "nume_utilizator"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_utilizatori_id_rol",
+            "unique": false,
+            "columnNames": [
+              "id_rol"
+            ],
+            "createSql": "CREATE  INDEX `index_utilizatori_id_rol` ON `${TABLE_NAME}` (`id_rol`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "roluri",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_rol"
+            ],
+            "referencedColumns": [
+              "id_rol"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "feedbacks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`data_emitere` INTEGER NOT NULL, `puncte_evaluare` REAL NOT NULL, `continut` TEXT NOT NULL, `titlu` TEXT NOT NULL, `id_feedback` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_sedinta` INTEGER NOT NULL, FOREIGN KEY(`id_sedinta`) REFERENCES `sedinte`(`id_sedinta`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "sentDate",
+            "columnName": "data_emitere",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "puncte_evaluare",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "continut",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "titlu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "feedbackId",
+            "columnName": "id_feedback",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "id_sedinta",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_feedback"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_feedbacks_id_sedinta",
+            "unique": true,
+            "columnNames": [
+              "id_sedinta"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_feedbacks_id_sedinta` ON `${TABLE_NAME}` (`id_sedinta`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sedinte",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_sedinta"
+            ],
+            "referencedColumns": [
+              "id_sedinta"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "locatii",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`url_imagine` TEXT NOT NULL, `strada` TEXT NOT NULL, `denumire` TEXT, `id_locatie` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "url_imagine",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "street",
+            "columnName": "strada",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alias",
+            "columnName": "denumire",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "locationId",
+            "columnName": "id_locatie",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_locatie"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "materiale",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`timp_estimat` INTEGER, `rezumat` TEXT, `url_imagine` TEXT, `url_sursa` TEXT NOT NULL, `titlu` TEXT NOT NULL, `id_material` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "estimatedTime",
+            "columnName": "timp_estimat",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "summary",
+            "columnName": "rezumat",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "url_imagine",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sourceUrl",
+            "columnName": "url_sursa",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "titlu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "materialId",
+            "columnName": "id_material",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_material"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "atasate_la",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`timp_disponibil` INTEGER, `data_initiala` INTEGER NOT NULL, `id_sedinta` INTEGER NOT NULL, `id_material` INTEGER NOT NULL, PRIMARY KEY(`id_sedinta`, `id_material`), FOREIGN KEY(`id_sedinta`) REFERENCES `sedinte`(`id_sedinta`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`id_material`) REFERENCES `materiale`(`id_material`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "availableTime",
+            "columnName": "timp_disponibil",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "initialDate",
+            "columnName": "data_initiala",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "id_sedinta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "materialId",
+            "columnName": "id_material",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_sedinta",
+            "id_material"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_atasate_la_id_sedinta_id_material",
+            "unique": true,
+            "columnNames": [
+              "id_sedinta",
+              "id_material"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_atasate_la_id_sedinta_id_material` ON `${TABLE_NAME}` (`id_sedinta`, `id_material`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sedinte",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_sedinta"
+            ],
+            "referencedColumns": [
+              "id_sedinta"
+            ]
+          },
+          {
+            "table": "materiale",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_material"
+            ],
+            "referencedColumns": [
+              "id_material"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "includ",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`prioritate` INTEGER, `data_initiala` INTEGER NOT NULL, `id_sedinta` INTEGER NOT NULL, `id_sarcina` INTEGER NOT NULL, PRIMARY KEY(`id_sedinta`, `id_sarcina`), FOREIGN KEY(`id_sedinta`) REFERENCES `sedinte`(`id_sedinta`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`id_sarcina`) REFERENCES `sarcini`(`id_sarcina`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "priority",
+            "columnName": "prioritate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "initialDate",
+            "columnName": "data_initiala",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "id_sedinta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "id_sarcina",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_sedinta",
+            "id_sarcina"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_includ_id_sedinta_id_sarcina",
+            "unique": true,
+            "columnNames": [
+              "id_sedinta",
+              "id_sarcina"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_includ_id_sedinta_id_sarcina` ON `${TABLE_NAME}` (`id_sedinta`, `id_sarcina`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sedinte",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_sedinta"
+            ],
+            "referencedColumns": [
+              "id_sedinta"
+            ]
+          },
+          {
+            "table": "sarcini",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_sarcina"
+            ],
+            "referencedColumns": [
+              "id_sarcina"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "probleme",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stare` TEXT NOT NULL, `description` TEXT NOT NULL, `titlu` TEXT NOT NULL, `id_problema` INTEGER NOT NULL, `id_coach` TEXT NOT NULL, `id_client` TEXT NOT NULL, PRIMARY KEY(`id_problema`), FOREIGN KEY(`id_coach`) REFERENCES `utilizatori`(`nume_utilizator`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`id_client`) REFERENCES `utilizatori`(`nume_utilizator`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "state",
+            "columnName": "stare",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "titlu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "problemId",
+            "columnName": "id_problema",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coachId",
+            "columnName": "id_coach",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "id_client",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_problema"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_probleme_id_coach",
+            "unique": false,
+            "columnNames": [
+              "id_coach"
+            ],
+            "createSql": "CREATE  INDEX `index_probleme_id_coach` ON `${TABLE_NAME}` (`id_coach`)"
+          },
+          {
+            "name": "index_probleme_id_client",
+            "unique": false,
+            "columnNames": [
+              "id_client"
+            ],
+            "createSql": "CREATE  INDEX `index_probleme_id_client` ON `${TABLE_NAME}` (`id_client`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "utilizatori",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_coach"
+            ],
+            "referencedColumns": [
+              "nume_utilizator"
+            ]
+          },
+          {
+            "table": "utilizatori",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_client"
+            ],
+            "referencedColumns": [
+              "nume_utilizator"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "sedinte",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`discutie` TEXT NOT NULL, `data_de_incepere` INTEGER NOT NULL, `id_sedinta` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_problema` INTEGER NOT NULL, `id_feedback` INTEGER, `id_locatie` INTEGER, FOREIGN KEY(`id_problema`) REFERENCES `probleme`(`id_problema`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`id_feedback`) REFERENCES `feedbacks`(`id_feedback`) ON UPDATE CASCADE ON DELETE SET NULL , FOREIGN KEY(`id_locatie`) REFERENCES `locatii`(`id_locatie`) ON UPDATE CASCADE ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "discussion",
+            "columnName": "discutie",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "data_de_incepere",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "id_sedinta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "problemId",
+            "columnName": "id_problema",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "feedbackId",
+            "columnName": "id_feedback",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "locationId",
+            "columnName": "id_locatie",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_sedinta"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_sedinte_id_feedback",
+            "unique": true,
+            "columnNames": [
+              "id_feedback"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_sedinte_id_feedback` ON `${TABLE_NAME}` (`id_feedback`)"
+          },
+          {
+            "name": "index_sedinte_id_problema",
+            "unique": false,
+            "columnNames": [
+              "id_problema"
+            ],
+            "createSql": "CREATE  INDEX `index_sedinte_id_problema` ON `${TABLE_NAME}` (`id_problema`)"
+          },
+          {
+            "name": "index_sedinte_id_locatie",
+            "unique": false,
+            "columnNames": [
+              "id_locatie"
+            ],
+            "createSql": "CREATE  INDEX `index_sedinte_id_locatie` ON `${TABLE_NAME}` (`id_locatie`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "probleme",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_problema"
+            ],
+            "referencedColumns": [
+              "id_problema"
+            ]
+          },
+          {
+            "table": "feedbacks",
+            "onDelete": "SET NULL",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_feedback"
+            ],
+            "referencedColumns": [
+              "id_feedback"
+            ]
+          },
+          {
+            "table": "locatii",
+            "onDelete": "SET NULL",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "id_locatie"
+            ],
+            "referencedColumns": [
+              "id_locatie"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"136e10d41825d0f11e29d9af41aa20f2\")"
+    ]
+  }
+}

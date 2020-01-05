@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.faculty.fusedbloxxer.coachingapp.home.users.UserModFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/utilizator"
+                android:textAlignment="center"
+                android:textAppearance="@style/ModTitle"
+                app:layout_constraintBottom_toTopOf="@+id/username_editText"
+                app:layout_constraintEnd_toEndOf="@+id/username_editText"
+                app:layout_constraintStart_toStartOf="@+id/username_editText"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/username_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/username_hint"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/name_editText"
+                app:layout_constraintEnd_toEndOf="@+id/name_editText"
+                app:layout_constraintStart_toStartOf="@+id/name_editText"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <EditText
+                android:id="@+id/name_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/name_hint"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/surname_editText"
+                app:layout_constraintEnd_toEndOf="@+id/surname_editText"
+                app:layout_constraintStart_toStartOf="@+id/surname_editText"
+                app:layout_constraintTop_toBottomOf="@+id/username_editText" />
+
+            <EditText
+                android:id="@+id/surname_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/surname_hint"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/email_editText"
+                app:layout_constraintEnd_toEndOf="@+id/email_editText"
+                app:layout_constraintStart_toStartOf="@+id/email_editText"
+                app:layout_constraintTop_toBottomOf="@+id/name_editText" />
+
+            <EditText
+                android:id="@+id/email_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/password_editText"
+                app:layout_constraintEnd_toEndOf="@+id/password_editText"
+                app:layout_constraintStart_toStartOf="@+id/password_editText"
+                app:layout_constraintTop_toBottomOf="@+id/surname_editText" />
+
+            <EditText
+                android:id="@+id/password_editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/roles_spinner"
+                app:layout_constraintEnd_toEndOf="@+id/roles_spinner"
+                app:layout_constraintStart_toStartOf="@+id/roles_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/email_editText" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:onClick="@{()->fragment.onAccept()}"
+                android:text="@string/accepta"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button2" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->fragment.onCancel()}"
+                android:text="@string/anuleaza"
+                app:layout_constraintBottom_toBottomOf="@+id/button"
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/button" />
+
+            <Spinner
+                android:id="@+id/roles_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/button2"
+                app:layout_constraintEnd_toEndOf="@+id/button"
+                app:layout_constraintStart_toStartOf="@+id/button2"
+                app:layout_constraintTop_toBottomOf="@+id/password_editText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

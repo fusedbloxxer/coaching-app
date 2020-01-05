@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">coachingapp</string>
+    <string name="roluri">Roluri</string>
+    <string name="utilizatori">Utilizatori</string>
+    <string name="probleme">Probleme</string>
+    <string name="sedinte">Sedinte</string>
+    <string name="locatii">Locatii</string>
+    <string name="feedbacks">Feedbacks</string>
+    <string name="materiale">Materiale</string>
+    <string name="sarcini">Sarcini</string>
+    <string name="istoric_sarcini">Istoric Sarcini</string>
+    <string name="atasate_la">Atasate La</string>
+    <string name="includ">Includ</string>
+    <string name="tabele">Tabele</string>
+    <string name="sort">Sort</string>
+    <string name="role">Role</string>
+    <string name="cancel">CANCEL</string>
+    <string name="finish">FINISH</string>
+    <string name="accepta">Accepta</string>
+    <string name="anuleaza">Anuleaza</string>
+    <string name="image_url">Introduceti un url pentru imagine</string>
+    <string name="description">Introduceti o scurta descriere</string>
+    <string name="role_id">Introduceti denumirea rolului</string>
+    <string name="username">Username</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="utilizator">Utilizator</string>
+    <string name="username_hint">Introduceti numele utilizatorului</string>
+    <string name="name_hint">Introduceti-va numele</string>
+    <string name="surname_hint">Introduceti-va prenumele</string>
+    <string name="email_hint">O: Introduceti o adresa de email</string>
+    <string name="password_hint">Introduceti o parola</string>
+</resources>

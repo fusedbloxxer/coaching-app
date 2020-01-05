@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/tabele">
+
+        <group android:checkableBehavior="single">
+
+            <item
+                android:id="@+id/roluri"
+                android:title="@string/roluri" />
+            <item
+                android:id="@+id/utilizatori"
+                android:title="@string/utilizatori" />
+            <item
+                android:id="@+id/probleme"
+                android:title="@string/probleme" />
+            <item
+                android:id="@+id/sedinte"
+                android:title="@string/sedinte" />
+            <item
+                android:id="@+id/locatii"
+                android:title="@string/locatii" />
+            <item
+                android:id="@+id/feedbacks"
+                android:title="@string/feedbacks" />
+            <item
+                android:id="@+id/materiale"
+                android:title="@string/materiale" />
+            <item
+                android:id="@+id/sarcini"
+                android:title="@string/sarcini" />
+            <item
+                android:id="@+id/istoric_sarcini"
+                android:title="@string/istoric_sarcini" />
+            <item
+                android:id="@+id/atasate_la"
+                android:title="@string/atasate_la" />
+            <item
+                android:id="@+id/includ"
+                android:title="@string/includ" />
+        </group>
+    </item>
+</menu>
