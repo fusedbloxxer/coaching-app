@@ -132,11 +132,11 @@ public class User {
             synchronized (User.class) {
                 if (sUsers == null) {
                     sUsers = new User[]{
-                            new User("strong_pass", null, "Andrei", "Ionescu", "fusedbloxxer", "client"),
+                            new User("strong_pass", null, "Bia", "Mia", "hehe", "client"),
                             new User("$L9@$%%Mwo6c", null, "Euan", "Ismail", "PORtouLT", "client"),
                             new User("NJgUOw$Q0uQ#", "8lark9@vdemegtic.shop", "Austin", "Casey", "deCtRIbl", "client"),
                             new User("Z&seZnWzsSpV", "dtmahb@planeselect.com", "Rafael", "Kelly", "WAYlEDOP", "coach"),
-                            new User("tkip_securitate", "profesor@my.fmi.unibuc.ro", "Cornel", "Vlad", "master", "coach"),
+                            new User("tkip_securitate", "profesor@ok.ro", "Cornel", "Vlad", "master", "coach"),
                             new User("MeYefo8YzTm^", null, "Cleo", "Evangeline", "moLuEGIT", "client"),
                             new User("PQQ#tqC%mrSw", "zprince.kashif.5g@hnyl96.com", "Abdullah", "Damien", "AckAriUm", "client"),
                             new User("EkH$H1p5$W8q", "banis@d7restoration.com", "Barnaby", "Matthew (Matt)", "LENzymPE", "coach"),
