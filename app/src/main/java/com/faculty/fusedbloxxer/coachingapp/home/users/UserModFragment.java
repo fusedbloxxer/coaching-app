@@ -100,7 +100,7 @@ public class UserModFragment extends ModFragment {
                     surnameEdit.getText().toString(),
                     nameEdit.getText().toString(),
                     usernameEdit.getText().toString(),
-                    role == null ? spinnerRole.getSelectedItem().toString() : role
+                    spinnerRole.getVisibility() == View.VISIBLE ? spinnerRole.getSelectedItem().toString() : role
             );
 
             if (username != null) {
