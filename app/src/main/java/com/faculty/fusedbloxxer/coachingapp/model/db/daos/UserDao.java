@@ -38,4 +38,24 @@ public abstract class UserDao implements BaseDao<User> {
 
     @Query("DELETE FROM utilizatori WHERE nume_utilizator = :username")
     public abstract void deleteUserByUsername(String username);
+
+    @Query("SELECT * " +
+            "FROM utilizatori " +
+            "WHERE LOWER(nume_utilizator) = LOWER(:userId) " +
+            "AND (nume_utilizator IN(SELECT id_coach FROM probleme)\n" +
+            "OR nume_utilizator IN(SELECT id_client FROM probleme));")
+    public abstract LiveData<User> getUserThatHasProblems(@NonNull String userId);
+
+    @Query("SELECT nume_utilizator " +
+            "FROM utilizatori " +
+            "WHERE LOWER(id_rol) LIKE LOWER(:roleId)")
+    public abstract LiveData<List<String>> getUsernamesByRole(String roleId);
+
+    public LiveData<List<String>> getAllCoachUsernames() {
+        return getUsernamesByRole("coach");
+    }
+
+    public LiveData<List<String>> getAllClientUsernames() {
+        return getUsernamesByRole("client");
+    }
 }

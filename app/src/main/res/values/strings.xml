@@ -2,7 +2,6 @@
     <string name="app_name">coachingapp</string>
     <string name="roluri">Roluri</string>
     <string name="utilizatori">Utilizatori</string>
-    <string name="probleme">Probleme</string>
     <string name="sedinte">Sedinte</string>
     <string name="locatii">Locatii</string>
     <string name="feedbacks">Feedbacks</string>
@@ -31,4 +30,8 @@
     <string name="surname_hint">Introduceti-va prenumele</string>
     <string name="email_hint">O: Introduceti o adresa de email</string>
     <string name="password_hint">Introduceti o parola</string>
+    <string name="probleme">Probleme</string>
+    <string name="hint_problem_title">Introduceti un titlu pentru problema</string>
+    <string name="hint_problem_description">Introduceti o descriere pentru problema</string>
+    <string name="hint_problem_state">Introduceti starea problemei</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Query;
 
 import com.faculty.fusedbloxxer.coachingapp.model.db.database.PersonalDevelopmentDatabase;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
 
@@ -88,6 +89,10 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
         return personalDevelopmentDatabase.userDao().getUserByUsername(username);
     }
 
+    public LiveData<User> getUserThatHasProblems(String username) {
+        return personalDevelopmentDatabase.userDao().getUserThatHasProblems(username);
+    }
+
     public LiveData<List<User>> getAllUsers() {
         return personalDevelopmentDatabase.userDao().getAllUsers();
     }
@@ -105,5 +110,68 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void insertUsers(User... users) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.userDao().insert(users));
+    }
+
+    public LiveData<List<String>> getAllCoachUsernames() {
+        return personalDevelopmentDatabase.userDao().getAllCoachUsernames();
+    }
+
+    public LiveData<List<String>> getAllClientUsernames() {
+        return personalDevelopmentDatabase.userDao().getAllClientUsernames();
+    }
+
+    public LiveData<List<Problem>> getAllProblems() {
+        return personalDevelopmentDatabase.problemDao().getAllProblems();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByIdAsc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByIdAsc();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByIdDesc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByIdDesc();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByDescriptionAsc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByDescriptionAsc();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByDescriptionDesc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByDescriptionDesc();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByStateAsc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByStateAsc();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByStateDesc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByStateDesc();
+    }
+
+    public LiveData<Problem> getProblemById(@NonNull Long problemId) {
+        return personalDevelopmentDatabase.problemDao().getProblemById(problemId);
+    }
+
+    public void deleteProblemWithId(@NonNull Long problemId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.problemDao().deleteProblemWithId(problemId));
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByTitleAsc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByTitleAsc();
+    }
+
+    public LiveData<List<Problem>> getProblemsSortedByTitleDesc() {
+        return personalDevelopmentDatabase.problemDao().getProblemsSortedByTitleDesc();
+    }
+
+    public void updateProblems(Problem... problems) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.problemDao().update(problems));
+    }
+
+    public void insertProblems(Problem... problems) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.problemDao().insert(problems));
     }
 }

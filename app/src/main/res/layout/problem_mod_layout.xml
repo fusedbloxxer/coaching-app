@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.faculty.fusedbloxxer.coachingapp.home.problems.ProblemModFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/probleme"
+                android:textAlignment="center"
+                android:textAppearance="@style/ModTitle"
+                app:layout_constraintBottom_toTopOf="@+id/problem_title_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/problem_title_edit_text"
+                app:layout_constraintStart_toStartOf="@+id/problem_title_edit_text"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/problem_title_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/hint_problem_title"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/problem_description_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/problem_description_edit_text"
+                app:layout_constraintStart_toStartOf="@+id/problem_description_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/problem_description_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/hint_problem_description"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toTopOf="@+id/problem_state_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/problem_state_edit_text"
+                app:layout_constraintStart_toStartOf="@+id/problem_state_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/problem_title_edit_text" />
+
+            <EditText
+                android:id="@+id/problem_state_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="@string/hint_problem_state"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/problem_spinner_coach"
+                app:layout_constraintEnd_toEndOf="@+id/problem_spinner_client"
+                app:layout_constraintStart_toStartOf="@+id/problem_spinner_coach"
+                app:layout_constraintTop_toBottomOf="@+id/problem_description_edit_text" />
+
+            <Spinner
+                android:id="@+id/problem_spinner_coach"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toTopOf="@+id/problem_button_cancel"
+                app:layout_constraintEnd_toStartOf="@+id/problem_spinner_client"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/problem_state_edit_text" />
+
+            <Spinner
+                android:id="@+id/problem_spinner_client"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/problem_spinner_coach"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/problem_spinner_coach"
+                app:layout_constraintTop_toTopOf="@+id/problem_spinner_coach" />
+
+            <Button
+                android:id="@+id/problem_button_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:onClick="@{()->fragment.onCancel()}"
+                android:text="@string/anuleaza"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/problem_spinner_coach"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/problem_spinner_coach"
+                app:layout_constraintTop_toBottomOf="@+id/problem_spinner_coach" />
+
+            <Button
+                android:id="@+id/problem_button_accept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->fragment.onAccept()}"
+                android:text="@string/accepta"
+                app:layout_constraintBottom_toBottomOf="@+id/problem_button_cancel"
+                app:layout_constraintEnd_toEndOf="@+id/problem_spinner_client"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/problem_spinner_client"
+                app:layout_constraintTop_toTopOf="@+id/problem_button_cancel" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Coach"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/problem_spinner_coach"
+                app:layout_constraintEnd_toEndOf="@+id/problem_spinner_coach"
+                app:layout_constraintStart_toStartOf="@+id/problem_spinner_coach"
+                app:layout_constraintTop_toBottomOf="@+id/problem_state_edit_text" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Client"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/problem_spinner_client"
+                app:layout_constraintEnd_toEndOf="@+id/problem_spinner_client"
+                app:layout_constraintStart_toStartOf="@+id/problem_spinner_client"
+                app:layout_constraintTop_toTopOf="@+id/textView5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

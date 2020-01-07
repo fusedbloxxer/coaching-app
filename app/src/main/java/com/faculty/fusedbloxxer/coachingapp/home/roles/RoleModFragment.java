@@ -13,29 +13,44 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.faculty.fusedbloxxer.coachingapp.R;
 import com.faculty.fusedbloxxer.coachingapp.core.BaseFragment;
+import com.faculty.fusedbloxxer.coachingapp.core.ModFragment;
 import com.faculty.fusedbloxxer.coachingapp.databinding.RoleModLayoutBinding;
 import com.faculty.fusedbloxxer.coachingapp.model.PersonalDevelopmentViewModel;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.utilities.Utils;
 
-public class RoleModFragment extends BaseFragment {
+public class RoleModFragment extends ModFragment {
     public String roleId;
-    private PersonalDevelopmentViewModel vm;
     private EditText roleIdEdit, roleDescEdit, roleImageEdit;
-
-    public RoleModFragment() {
-    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         RoleModLayoutBinding roleModLayoutBinding = RoleModLayoutBinding
                 .inflate(inflater, container, false);
 
         roleModLayoutBinding.setFragment(this);
         roleModLayoutBinding.setLifecycleOwner(this);
+
+        return roleModLayoutBinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void initViews(@NonNull View view) {
+        roleIdEdit = view.findViewById(R.id.role_id_editText);
+        roleImageEdit = view.findViewById(R.id.role_image_url_editText);
+        roleDescEdit = view.findViewById(R.id.role_description_editText);
+    }
+
+    @Override
+    protected void setArgumentId() {
         roleId = getArguments() != null ? RoleModFragmentArgs.fromBundle(getArguments()).getRoleId() : null;
-        vm = ViewModelProviders.of(this).get(PersonalDevelopmentViewModel.class);
 
         if (roleId != null) {
             vm.getRoleById(roleId).observe(this, role -> {
@@ -45,24 +60,9 @@ public class RoleModFragment extends BaseFragment {
                 roleDescEdit.setText(role.getDescription());
             });
         }
-
-        return roleModLayoutBinding.getRoot();
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        roleIdEdit = view.findViewById(R.id.role_id_editText);
-        roleImageEdit = view.findViewById(R.id.role_image_url_editText);
-        roleDescEdit = view.findViewById(R.id.role_description_editText);
-    }
-
-    public void onCancel() {
-        if (getActivity() != null) {
-            getActivity().onBackPressed();
-        }
-    }
-
     public void onAccept() {
         if (Utils.checkEditTexts(roleIdEdit, roleDescEdit, roleImageEdit)) {
             final Role role = new Role(roleImageEdit.getText().toString(),

@@ -280,6 +280,11 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
             db.execSQL("CREATE INDEX \"index_utilizatori_id_rol\" ON \"utilizatori\" (\n" +
                     "\t\"id_rol\"\n" +
                     ");");
+            db.execSQL("CREATE TRIGGER IF NOT EXISTS user_satisfies_role " +
+                    "BEFORE UPDATE ON utilizatori " +
+                    "WHEN (EXISTS(SELECT id_coach FROM probleme WHERE NEW.nume_utilizator = id_coach) AND LOWER(NEW.id_rol) NOT LIKE '%coach%')" +
+                    "OR (EXISTS(SELECT id_client FROM probleme WHERE NEW.nume_utilizator = id_client) AND LOWER(NEW.id_rol) NOT LIKE '%client%')" +
+                    "BEGIN SELECT RAISE(FAIL, 'utilizatorul nu isi poate modifica rolul !!'); END;");
 
             databaseWriterExecutor.execute(() -> {
                 INSTANCE.roleDao().insert(Role.getFakeRoles());

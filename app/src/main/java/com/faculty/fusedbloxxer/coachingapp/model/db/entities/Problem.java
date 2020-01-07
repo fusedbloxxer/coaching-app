@@ -72,6 +72,15 @@ public class Problem {
     }
 
     @Ignore
+    public Problem(@NonNull String state, @NonNull String description, @NonNull String title, @NonNull String coachId, @NonNull String clientId) {
+        this.state = state;
+        this.description = description;
+        this.title = title;
+        this.coachId = coachId;
+        this.clientId = clientId;
+    }
+
+    @Ignore
     public Problem(@NonNull String description, @NonNull String title, @NonNull Long problemId, @NonNull String coachId, @NonNull String clientId) {
         this.description = description;
         this.title = title;

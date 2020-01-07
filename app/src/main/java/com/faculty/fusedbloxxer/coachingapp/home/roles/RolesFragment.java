@@ -19,6 +19,9 @@ public class RolesFragment extends TableFragment<String> {
 
     private RoleAdapter roleAdapter;
 
+    public RolesFragment() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

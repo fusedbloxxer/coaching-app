@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.faculty.fusedbloxxer.coachingapp.R;
 import com.faculty.fusedbloxxer.coachingapp.core.BaseFragment;
+import com.faculty.fusedbloxxer.coachingapp.core.ModFragment;
 import com.faculty.fusedbloxxer.coachingapp.databinding.UserModLayoutBinding;
 import com.faculty.fusedbloxxer.coachingapp.model.PersonalDevelopmentViewModel;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
@@ -31,40 +32,25 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class UserModFragment extends BaseFragment {
-    private String username;
+public class UserModFragment extends ModFragment {
     private Spinner spinnerRole;
-    private PersonalDevelopmentViewModel vm;
+    private String username, role;
     private EditText usernameEdit, nameEdit, surnameEdit, emailEdit, passEdit;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         UserModLayoutBinding userModLayoutBinding = UserModLayoutBinding
                 .inflate(inflater, container, false);
         userModLayoutBinding.setFragment(this);
         return userModLayoutBinding.getRoot();
     }
 
-    @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initViews(view);
-
-        vm = ViewModelProviders.of(this).get(PersonalDevelopmentViewModel.class);
-        username = getArguments() != null ? UserModFragmentArgs.fromBundle(getArguments()).getUsername() : null;
-
-        if (username != null) {
-            vm.getUserByUsername(username).observe(this, user -> {
-                usernameEdit.setEnabled(false);
-                nameEdit.setText(user.getLastName());
-                passEdit.setText(user.getPassword());
-                usernameEdit.setText(user.getUsername());
-                surnameEdit.setText(user.getFirstName());
-                emailEdit.setText(user.getEmailAddress() != null ? user.getEmailAddress() : "");
-            });
-        }
 
         Fragment fragment = this;
         vm.getAllRoles().observe(this, roles -> {
@@ -73,7 +59,8 @@ public class UserModFragment extends BaseFragment {
         });
     }
 
-    private void initViews(View view) {
+    @Override
+    public void initViews(View view) {
         spinnerRole = view.findViewById(R.id.roles_spinner);
         usernameEdit = view.findViewById(R.id.username_editText);
         nameEdit = view.findViewById(R.id.name_editText);
@@ -82,12 +69,29 @@ public class UserModFragment extends BaseFragment {
         passEdit = view.findViewById(R.id.password_editText);
     }
 
-    public void onCancel() {
-        if (getActivity() != null) {
-            getActivity().onBackPressed();
+    @Override
+    protected void setArgumentId() {
+        username = getArguments() != null ? UserModFragmentArgs.fromBundle(getArguments()).getUsername() : null;
+
+        if (username != null) {
+            vm.getUserByUsername(username).observe(this, user -> {
+                role = user.getRoleId();
+                usernameEdit.setEnabled(false);
+                nameEdit.setText(user.getLastName());
+                passEdit.setText(user.getPassword());
+                usernameEdit.setText(user.getUsername());
+                surnameEdit.setText(user.getFirstName());
+                emailEdit.setText(user.getEmailAddress() != null ? user.getEmailAddress() : "");
+            });
+            vm.getUserThatHasProblems(username).observe(this, user -> {
+                if (user != null) {
+                    spinnerRole.setVisibility(View.INVISIBLE);
+                }
+            });
         }
     }
 
+    @Override
     public void onAccept() {
         if (Utils.checkEditTexts(usernameEdit, nameEdit, surnameEdit, passEdit) && emailCheck() && passwordCheck()) {
             final User user = new User(
@@ -96,7 +100,7 @@ public class UserModFragment extends BaseFragment {
                     surnameEdit.getText().toString(),
                     nameEdit.getText().toString(),
                     usernameEdit.getText().toString(),
-                    spinnerRole.getSelectedItem().toString()
+                    role == null ? spinnerRole.getSelectedItem().toString() : role
             );
 
             if (username != null) {
@@ -105,14 +109,12 @@ public class UserModFragment extends BaseFragment {
                 vm.insertUsers(user);
             }
 
-            if (getActivity() != null) {
-                getActivity().onBackPressed();
-            }
+            onCancel();
         }
     }
 
     private boolean emailCheck() {
-        if (emailEdit.getText().length() > 0 && !emailEdit.getText().toString().matches("\\w+@\\w+\\.\\w+")) {
+        if (emailEdit.getText().length() > 0 && !emailEdit.getText().toString().matches(".+@.+\\..+")) {
             emailEdit.setError("Email should contain only a-z, A-Z and 0-9!");
             return false;
         }
