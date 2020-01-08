@@ -33,6 +33,8 @@ public class LocationViewHolder extends RecyclerView.ViewHolder {
         mLocationStreetEditText = itemView.findViewById(R.id.location_street_text_view);
     }
 
+    // TODO: adauga googlemaps pe strada
+
     public void setLocationId(Long locationId) {
         if (locationId != null) {
             mLocationId = locationId;

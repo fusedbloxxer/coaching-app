@@ -9,7 +9,6 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.faculty.fusedbloxxer.coachingapp.R;
 import com.faculty.fusedbloxxer.coachingapp.model.db.converters.DateConverter;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.FeedbackDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.LocationDao;
@@ -295,6 +294,7 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
 
                 INSTANCE.locationDao().insert(Location.getFakeLocations());
                 INSTANCE.materialDao().insert(Material.getFakeMaterials());
+
                 INSTANCE.sessionDao().insert(Session.getFakeSessions());
                 INSTANCE.feedbackDao().insert(Feedback.getFakeFeedbacks());
                 INSTANCE.sessionDao().updateFeedbackForSession(1L, 1L);

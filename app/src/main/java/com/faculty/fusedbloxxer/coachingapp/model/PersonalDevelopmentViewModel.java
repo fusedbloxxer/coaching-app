@@ -7,9 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.faculty.fusedbloxxer.coachingapp.model.db.database.PersonalDevelopmentDatabase;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Feedback;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Location;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Session;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
 
 import java.util.List;
@@ -220,5 +222,81 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void insertLocations(Location... locations) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.locationDao().insert(locations));
+    }
+
+    public LiveData<List<Feedback>> getAllFeedbacks() {
+        return personalDevelopmentDatabase.feedbackDao().getAllFeedbacks();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByIdAsc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByIdAsc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByIdDesc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByIdDesc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedBySessionAsc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedBySessionAsc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedBySessionDesc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedBySessionDesc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByTitleAsc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByTitleAsc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByTitleDesc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByTitleDesc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByContentLengthAsc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByContentLengthAsc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByContentLengthDesc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByContentLengthDesc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByRatingAsc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByRatingAsc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByRatingDesc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByRatingDesc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByEmissionDateAsc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByEmissionDateAsc();
+    }
+
+    public LiveData<List<Feedback>> getFeedbacksSortedByEmissionDateDesc() {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbacksSortedByEmissionDateDesc();
+    }
+
+    public LiveData<Feedback> getFeedbackById(Long feedbackId) {
+        return personalDevelopmentDatabase.feedbackDao().getFeedbackById(feedbackId);
+    }
+
+    public void deleteFeedbackById(Long feedbackId) {
+        personalDevelopmentDatabase.feedbackDao().deleteFeedbackById(feedbackId);
+    }
+
+    public LiveData<Long> isFeedbackConfirmed(Long feedbackId) {
+        return personalDevelopmentDatabase.feedbackDao().isFeedbackConfirmed(feedbackId);
+    }
+
+    public LiveData<List<Session>> getSessionsWithoutFeedback() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsWithoutFeedback();
+    }
+
+    public LiveData<Session> getSessionByFeedbackId(Long feedbackId) {
+        return personalDevelopmentDatabase.sessionDao().getSessionByFeedbackId(feedbackId);
+    }
+
+    public LiveData<User> getUserWithFeedbackId(Long feedbackId) {
+        return personalDevelopmentDatabase.userDao().getUserWithFeedbackId(feedbackId);
     }
 }

@@ -40,4 +40,7 @@
     <string name="location_image_url_hint">Introduceti un link cu o imagine a locatiei</string>
     <string name="client">Client</string>
     <string name="coach">Coach</string>
+    <string name="feedback_title_hint">Introduceti un titlu</string>
+    <string name="feedback_content_hint">Spuneti-va parerea despre sedinta</string>
+    <string name="feedback">Feedback</string>
 </resources>

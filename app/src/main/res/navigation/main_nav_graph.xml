@@ -104,5 +104,10 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@id/feedbacks"
+        android:name="com.faculty.fusedbloxxer.coachingapp.home.feedbacks.FeedbackFragment"
+        android:label="Feedback"
+        tools:layout="@layout/table_list_fragment" />
 
 </navigation>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/feedback_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/feedback"
+            android:textAlignment="center"
+            android:textAppearance="@style/ModTitle"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_id_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/feedback_id_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_title_edit_text"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_text_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/feedback_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_text_view"
+            tools:text="ID: 251234" />
+
+        <EditText
+            android:id="@+id/feedback_title_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="@string/feedback_title_hint"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            app:layout_constraintBottom_toTopOf="@+id/ratingBar"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_text_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/feedback_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_id_text_view" />
+
+        <EditText
+            android:id="@+id/feedback_content_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/feedback_content_hint"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_emission_date_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_title_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/feedback_title_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:numStars="5"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_content_edit_text"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_title_edit_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/feedback_title_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_title_edit_text" />
+
+        <TextView
+            android:id="@+id/feedback_emission_date_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_original_session_id_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_content_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/feedback_content_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_content_edit_text"
+            tools:text="Data la care a fost emis" />
+
+        <Spinner
+            android:id="@+id/feedback_session_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_original_session_id_text_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/feedback_original_session_id_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_original_session_id_text_view" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/accepta"
+            app:layout_constraintBottom_toBottomOf="@+id/button4"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_text_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button4"
+            app:layout_constraintTop_toTopOf="@+id/button4" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/anuleaza"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/feedback_text_view" />
+
+        <TextView
+            android:id="@+id/feedback_original_session_id_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_session_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_emission_date_text_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/feedback_emission_date_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_emission_date_text_view"
+            tools:text="ID SEDINTA: 214124" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

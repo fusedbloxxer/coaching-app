@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feedback_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RatingBar
+            android:id="@+id/feedback_rating_bar"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_content_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_title_text_view"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/feedback_title_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_client_username_text_view" />
+
+        <TextView
+            android:id="@+id/feedback_title_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_client_username_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_session_text_view"
+            app:layout_constraintStart_toStartOf="@+id/feedback_session_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_session_text_view"
+            tools:text="Titlu feedback" />
+
+        <TextView
+            android:id="@+id/feedback_session_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_title_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_verified_checkbox"
+            app:layout_constraintStart_toStartOf="@+id/feedback_verified_checkbox"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_verified_checkbox"
+            tools:text="Titlu sau id sedinta" />
+
+        <TextView
+            android:id="@+id/feedback_emission_date_feedback"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_content_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_content_text_view"
+            tools:text="A fost emis la data 20.34.2505" />
+
+        <CheckBox
+            android:id="@+id/feedback_verified_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:padding="8dp"
+            android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_session_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Feedback 3459 confirmat" />
+
+        <TextView
+            android:id="@+id/feedback_client_username_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_rating_bar"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_title_text_view"
+            app:layout_constraintStart_toStartOf="@+id/feedback_title_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_title_text_view"
+            tools:text="Publicat de catre [nume_utilizator]" />
+
+        <TextView
+            android:id="@+id/feedback_content_text_view"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/feedback_emission_date_feedback"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_title_text_view"
+            app:layout_constraintStart_toStartOf="@+id/feedback_title_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_rating_bar"
+            tools:text="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
