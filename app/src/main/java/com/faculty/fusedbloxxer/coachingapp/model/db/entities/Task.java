@@ -111,7 +111,10 @@ public class Task {
                             new Task(25L, "Suna-ti prietenii si mergeti in parc.", null, "Ieseala"),
                             new Task(null, "Fa-ti un plan de afaceri.", 100L, "Business"),
                             new Task(130L, "Vezi un film, descopera lucruri noi.", 35L, "Educatie"),
-                            new Task(20L, "Mananca ceva sanatos", null, "Gustos")
+                            new Task(20L, "Mananca ceva sanatos", null, "Gustos"),
+                            new Task(null, "Aranjeaza-ti lucrurile, fa curatenie in casa. Acest lucru te va ajuta sa-ti eliberezi mintea.", 24L, "Light Mind"),
+                            new Task(40L, "Iesi la un maraton de jogging, ia-ti 2-3 prieteni si simte-te liber.", 89L, "Sport is life"),
+                            new Task(220L, "Porneste un proiect prin care vei ajuta copii cu cancer. Acest fapt o sa te ajute sa intelegi cum sa empatizezi.", 100L, "Sharing is caring")
                     };
                 }
             }

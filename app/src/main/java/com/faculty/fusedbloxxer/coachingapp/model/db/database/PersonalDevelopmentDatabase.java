@@ -118,14 +118,6 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
             db.execSQL("CREATE UNIQUE INDEX \"index_feedbacks_id_sedinta\" ON \"feedbacks\" (\n" +
                     "\t\"id_sedinta\"\n" +
                     ");");
-            db.execSQL("CREATE TRIGGER IF NOT EXISTS feedbacks_sedinte_insert_check " +
-                    "BEFORE INSERT ON feedbacks " +
-                    "WHEN (SELECT id_feedback FROM sedinte WHERE id_sedinta = NEW.id_sedinta) <> NEW.id_feedback " +
-                    "BEGIN SELECT RAISE(FAIL, 'session does not match feedback'); END;");
-            db.execSQL("CREATE TRIGGER IF NOT EXISTS feedbacks_sedinte_update_check " +
-                    "BEFORE UPDATE ON feedbacks " +
-                    "WHEN (SELECT id_feedback FROM sedinte WHERE id_sedinta = NEW.id_sedinta) <> NEW.id_feedback " +
-                    "BEGIN SELECT RAISE(FAIL, 'session does not match feedback'); END;");
 
             db.execSQL("DROP TABLE locatii");
             db.execSQL("CREATE TABLE \"locatii\" (\n" +
@@ -188,14 +180,9 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
                     "\t\"data_de_incepere\"\tINTEGER NOT NULL,\n" +
                     "\t\"id_sedinta\"\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
                     "\t\"id_problema\"\tINTEGER NOT NULL,\n" +
-                    "\t\"id_feedback\"\tINTEGER UNIQUE,\n" +
                     "\t\"id_locatie\"\tINTEGER,\n" +
                     "\tFOREIGN KEY(\"id_problema\") REFERENCES \"probleme\"(\"id_problema\") ON UPDATE CASCADE ON DELETE CASCADE,\n" +
-                    "\tFOREIGN KEY(\"id_feedback\") REFERENCES \"feedbacks\"(\"id_feedback\") ON UPDATE CASCADE ON DELETE SET NULL,\n" +
                     "\tFOREIGN KEY(\"id_locatie\") REFERENCES \"locatii\"(\"id_locatie\") ON UPDATE CASCADE ON DELETE SET NULL\n" +
-                    ");");
-            db.execSQL("CREATE UNIQUE INDEX \"index_sedinte_id_feedback\" ON \"sedinte\" (\n" +
-                    "\t\"id_feedback\"\n" +
                     ");");
             db.execSQL("CREATE INDEX \"index_sedinte_id_locatie\" ON \"sedinte\" (\n" +
                     "\t\"id_locatie\"\n" +
@@ -203,14 +190,6 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
             db.execSQL("CREATE INDEX \"index_sedinte_id_problema\" ON \"sedinte\" (\n" +
                     "\t\"id_problema\"\n" +
                     ");");
-            db.execSQL("CREATE TRIGGER IF NOT EXISTS sedinte_feedbacks_insert_check " +
-                    "BEFORE INSERT ON sedinte " +
-                    "WHEN (SELECT id_sedinta FROM feedbacks WHERE id_feedback = NEW.id_feedback) <> NEW.id_sedinta " +
-                    "BEGIN SELECT RAISE(FAIL, 'feedback does not match session'); END;");
-            db.execSQL("CREATE TRIGGER IF NOT EXISTS sedinte_feedbacks_update_check " +
-                    "BEFORE UPDATE ON sedinte " +
-                    "WHEN (SELECT id_sedinta FROM feedbacks WHERE id_feedback = NEW.id_feedback) <> NEW.id_sedinta " +
-                    "BEGIN SELECT RAISE(FAIL, 'feedback does not match session'); END;");
 
             db.execSQL("DROP TABLE atasate_la");
             db.execSQL("CREATE TABLE \"atasate_la\" (\n" +
@@ -297,11 +276,6 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
 
                 INSTANCE.sessionDao().insert(Session.getFakeSessions());
                 INSTANCE.feedbackDao().insert(Feedback.getFakeFeedbacks());
-                INSTANCE.sessionDao().updateFeedbackForSession(1L, 1L);
-                INSTANCE.sessionDao().updateFeedbackForSession(2L, 3L);
-                INSTANCE.sessionDao().updateFeedbackForSession(3L, 2L);
-                INSTANCE.sessionDao().updateFeedbackForSession(4L, 4L);
-                INSTANCE.sessionDao().updateFeedbackForSession(5L, 5L);
 
                 INSTANCE.taskDao().insert(Task.getFakeTasks());
 

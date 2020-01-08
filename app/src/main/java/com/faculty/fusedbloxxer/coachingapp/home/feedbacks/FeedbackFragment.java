@@ -176,7 +176,7 @@ public class FeedbackFragment extends TableFragment<Long> {
 
     @Override
     protected void onFabClick() {
-
+        navController.navigate(FeedbackFragmentDirections.actionFeedbacksToFeedbackModFragment());
     }
 
     @Override
@@ -186,6 +186,10 @@ public class FeedbackFragment extends TableFragment<Long> {
 
     @Override
     public void updateOrDelete(Long element, int option) {
-
+        if (option == 0) {
+            navController.navigate(FeedbackFragmentDirections.actionFeedbacksToFeedbackModFragment().setFeedbackId(element + ""));
+        } else {
+            vm.deleteFeedbackById(element);
+        }
     }
 }

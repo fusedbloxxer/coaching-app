@@ -148,14 +148,14 @@ public class Feedback {
             synchronized (Feedback.class) {
                 if (sFeedbacks == null) {
                     sFeedbacks = new Feedback[]{
-                            new Feedback(timestamp(), randomNumber(5), "Nu ati fost foarte serios", "Un mascarici", 1L),
-                            new Feedback(timestamp(), randomNumber(5), "Nu stiu daca as mai veni", "Nu-s sigur", 3L),
-                            new Feedback(timestamp(), randomNumber(5), "A fost interesant", "Super", 2L),
                             new Feedback(timestamp(), 5f, "Mi-a placut cumva", "Bun", 4L),
                             new Feedback(timestamp(), randomNumber(5), "Ok", "Nu stiu", 5L),
+                            new Feedback(timestamp(), randomNumber(5), "A fost interesant", "Super", 3L),
+                            new Feedback(timestamp(), randomNumber(5), "E tare tipul !", "Why not ?", 8L),
+                            new Feedback(timestamp(), randomNumber(5), "Nu stiu daca as mai veni", "Nu-s sigur", 2L),
+                            new Feedback(timestamp(), randomNumber(5), "Nu ati fost foarte serios", "Un mascarici", 1L),
                             new Feedback(timestamp(), randomNumber(5), "A fost o experienta placuta.", "A fost decent", 6L),
-                            new Feedback(timestamp(), randomNumber(5), "Toate sarcinile mi-au trezit talentele ascunse", "O sa mai merg", 7L),
-                            new Feedback(timestamp(), randomNumber(5), "E tare tipul !", "Why not ?", 8L)
+                            new Feedback(timestamp(), randomNumber(5), "Toate sarcinile mi-au trezit talentele ascunse", "O sa mai merg", 7L)
                     };
                 }
             }

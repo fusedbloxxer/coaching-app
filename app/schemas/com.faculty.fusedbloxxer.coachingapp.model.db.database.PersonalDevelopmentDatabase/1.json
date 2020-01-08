@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "136e10d41825d0f11e29d9af41aa20f2",
+    "identityHash": "b50e4f25c32da4b93f3fae1078045bb9",
     "entities": [
       {
         "tableName": "roluri",
@@ -607,7 +607,7 @@
       },
       {
         "tableName": "sedinte",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`discutie` TEXT NOT NULL, `data_de_incepere` INTEGER NOT NULL, `id_sedinta` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_problema` INTEGER NOT NULL, `id_feedback` INTEGER, `id_locatie` INTEGER, FOREIGN KEY(`id_problema`) REFERENCES `probleme`(`id_problema`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`id_feedback`) REFERENCES `feedbacks`(`id_feedback`) ON UPDATE CASCADE ON DELETE SET NULL , FOREIGN KEY(`id_locatie`) REFERENCES `locatii`(`id_locatie`) ON UPDATE CASCADE ON DELETE SET NULL )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`discutie` TEXT NOT NULL, `data_de_incepere` INTEGER NOT NULL, `id_sedinta` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_problema` INTEGER NOT NULL, `id_locatie` INTEGER, FOREIGN KEY(`id_problema`) REFERENCES `probleme`(`id_problema`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`id_locatie`) REFERENCES `locatii`(`id_locatie`) ON UPDATE CASCADE ON DELETE SET NULL )",
         "fields": [
           {
             "fieldPath": "discussion",
@@ -634,12 +634,6 @@
             "notNull": true
           },
           {
-            "fieldPath": "feedbackId",
-            "columnName": "id_feedback",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
             "fieldPath": "locationId",
             "columnName": "id_locatie",
             "affinity": "INTEGER",
@@ -653,14 +647,6 @@
           "autoGenerate": true
         },
         "indices": [
-          {
-            "name": "index_sedinte_id_feedback",
-            "unique": true,
-            "columnNames": [
-              "id_feedback"
-            ],
-            "createSql": "CREATE UNIQUE INDEX `index_sedinte_id_feedback` ON `${TABLE_NAME}` (`id_feedback`)"
-          },
           {
             "name": "index_sedinte_id_problema",
             "unique": false,
@@ -691,17 +677,6 @@
             ]
           },
           {
-            "table": "feedbacks",
-            "onDelete": "SET NULL",
-            "onUpdate": "CASCADE",
-            "columns": [
-              "id_feedback"
-            ],
-            "referencedColumns": [
-              "id_feedback"
-            ]
-          },
-          {
             "table": "locatii",
             "onDelete": "SET NULL",
             "onUpdate": "CASCADE",
@@ -717,7 +692,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"136e10d41825d0f11e29d9af41aa20f2\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b50e4f25c32da4b93f3fae1078045bb9\")"
     ]
   }
 }

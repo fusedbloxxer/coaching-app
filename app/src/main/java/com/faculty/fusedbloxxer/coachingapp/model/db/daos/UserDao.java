@@ -59,10 +59,13 @@ public abstract class UserDao implements BaseDao<User> {
         return getUsernamesByRole("client");
     }
 
-    @Query("SELECT utilizatori.* " +
+    @Query(" SELECT utilizatori.* " +
             "FROM utilizatori " +
             "JOIN probleme ON(utilizatori.nume_utilizator = probleme.id_client)" +
             "JOIN sedinte ON(probleme.id_problema = sedinte.id_problema)" +
-            "WHERE id_feedback = :feedbackId")
-    public abstract LiveData<User> getUserWithFeedbackId(Long feedbackId);
+            "WHERE id_sedinta IN(SELECT id_sedinta " +
+            "                    FROM feedbacks " +
+            "                    WHERE id_feedback = :feedbackId " +
+            "                    AND :feedbackId IS NOT NULL)")
+    public abstract LiveData<User> getUserWithFeedbackId(@NonNull Long feedbackId);
 }

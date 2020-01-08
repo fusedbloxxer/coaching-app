@@ -114,19 +114,19 @@ public class SessionTask {
             synchronized (SessionTask.class) {
                 if (sSessionTasks == null) {
                     sSessionTasks = new SessionTask[]{
-                            new SessionTask(null, timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask(null, timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask(null, timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask(null, timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask(null, timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask(null, timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length))),
-                            new SessionTask((long) randomNumber(5), timestamp(), 1 + (long) randomNumber(Session.getFakeSessions().length), (long) (1 + randomNumber(Task.getFakeTasks().length)))
+                            new SessionTask(null, timestamp(), 1L, 1L),
+                            new SessionTask(null, timestamp(), 2L, 2L),
+                            new SessionTask(null, timestamp(), 3L, 3L),
+                            new SessionTask(null, timestamp(), 4L, 4L),
+                            new SessionTask(null, timestamp(), 5L, 4L),
+                            new SessionTask(null, timestamp(), 6L, 2L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 7L, 1L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 8L, 1L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 1L, 2L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 1L, 4L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 2L, 5L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 8L, 6L),
+                            new SessionTask((long) randomNumber(5), timestamp(), 6L, 5L)
                     };
                 }
             }

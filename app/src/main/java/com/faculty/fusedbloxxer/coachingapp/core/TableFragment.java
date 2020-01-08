@@ -70,5 +70,4 @@ public abstract class TableFragment<T> extends BaseFragment implements INavigabl
     protected abstract void onFabClick();
 
     protected abstract String getSortKey();
-
 }

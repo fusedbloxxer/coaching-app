@@ -108,6 +108,24 @@
         android:id="@id/feedbacks"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.feedbacks.FeedbackFragment"
         android:label="Feedback"
-        tools:layout="@layout/table_list_fragment" />
+        tools:layout="@layout/table_list_fragment" >
+        <action
+            android:id="@+id/action_feedbacks_to_feedbackModFragment"
+            app:destination="@id/feedbackModFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedbackModFragment"
+        android:name="com.faculty.fusedbloxxer.coachingapp.home.feedbacks.FeedbackModFragment"
+        android:label="FeedbackModFragment" >
+        <argument
+            android:name="feedbackId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
 </navigation>
