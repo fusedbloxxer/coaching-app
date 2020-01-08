@@ -34,4 +34,10 @@
     <string name="hint_problem_title">Introduceti un titlu pentru problema</string>
     <string name="hint_problem_description">Introduceti o descriere pentru problema</string>
     <string name="hint_problem_state">Introduceti starea problemei</string>
+    <string name="location_title">Locatie</string>
+    <string name="location_street_hint">Introduceti strada unde se afla locatia</string>
+    <string name="location_alias_hint">O: Introduceti o denumire uzuala a locatiei</string>
+    <string name="location_image_url_hint">Introduceti un link cu o imagine a locatiei</string>
+    <string name="client">Client</string>
+    <string name="coach">Coach</string>
 </resources>

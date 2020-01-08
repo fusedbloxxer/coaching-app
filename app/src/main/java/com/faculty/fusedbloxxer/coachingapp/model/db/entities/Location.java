@@ -98,11 +98,15 @@ public class Location {
             synchronized (Location.class) {
                 if (sLocations == null) {
                     sLocations = new Location[]{
-                            new Location("http://www.bucurestifm.ro/wp-content/uploads/sites/2/2015/08/07.-Parcul-Alexandru-Ioan-Cuza-Bucuresti-FM.jpg", "Strada Baba Novac", "La Cuza"),
+                            new Location("https://s.inyourpocket.com/img/figure/2015-04/Lacul_din_Parcul_Titan.jpg", "Strada Baba Novac", "La Cuza"),
                             new Location("https://upload.wikimedia.org/wikipedia/commons/0/04/Parcul_Tineretului.jpg", "Parcul Tineretului", "Titanel"),
                             new Location("https://cdn.g4media.ro/wp-content/uploads/2019/08/parcul-cismigiu-640x400.jpg", "Parcul Cismigiu"),
-                            new Location("http://merg.in/thumbs/big_art/2017/09/25/parcul-izvor-18327.jpg", "Parcul Izvor"),
-                            new Location("https://editiadedimineata.ro/wp-content/uploads/2018/06/1-Parcul-Carol-1170x780.jpg", "Parcul Carol")
+                            new Location("https://upload.wikimedia.org/wikipedia/commons/0/0b/Parcul_Izvor_%281%29.jpg", "Parcul Izvor"),
+                            new Location("https://editiadedimineata.ro/wp-content/uploads/2018/06/1-Parcul-Carol-1170x780.jpg", "Parcul Carol"),
+                            new Location("https://www.planetware.com/wpimages/2019/10/asia-best-places-to-visit-mount-fuji-japan.jpg", "Fuji Japan", "Cool place"),
+                            new Location("https://media.cntraveler.com/photos/5ddd54cd5776370009939c09/master/pass/Argentina_GettyImages-1146497849.jpg", "Argentina", ""),
+                            new Location("https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/newsletter/eiffel-tower-in-paris-151-medium.jpg?1564742900", "Paris", "The city of love"),
+                            new Location("https://image.businessinsider.com/5df014b0fd9db2605576bb35?width=1100&format=jpeg&auto=webp", "China Wall", "The impenetrable fortress")
                     };
                 }
             }

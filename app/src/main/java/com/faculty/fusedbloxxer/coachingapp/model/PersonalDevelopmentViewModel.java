@@ -5,9 +5,9 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.room.Query;
 
 import com.faculty.fusedbloxxer.coachingapp.model.db.database.PersonalDevelopmentDatabase;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Location;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
@@ -173,5 +173,52 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void insertProblems(Problem... problems) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.problemDao().insert(problems));
+    }
+
+    public LiveData<List<Location>> getAllLocations() {
+        return personalDevelopmentDatabase.locationDao().getAllLocations();
+    }
+
+    public LiveData<List<Location>> getLocationsSortedByAliasAsc() {
+        return personalDevelopmentDatabase.locationDao().getLocationsSortedByAliasAsc();
+    }
+
+    public LiveData<List<Location>> getLocationsSortedByAliasDesc() {
+        return personalDevelopmentDatabase.locationDao().getLocationsSortedByAliasDesc();
+    }
+
+    public LiveData<List<Location>> getLocationsSortedByStreetAsc() {
+        return personalDevelopmentDatabase.locationDao().getLocationsSortedByStreetAsc();
+    }
+
+    public LiveData<List<Location>> getLocationsSortedByStreetDesc() {
+        return personalDevelopmentDatabase.locationDao().getLocationsSortedByStreetDesc();
+    }
+
+    public LiveData<List<Location>> getLocationsSortedByIdAsc() {
+        return personalDevelopmentDatabase.locationDao().getLocationsSortedByIdAsc();
+    }
+
+    public LiveData<List<Location>> getLocationsSortedByIdDesc() {
+        return personalDevelopmentDatabase.locationDao().getLocationsSortedByIdDesc();
+    }
+
+    public LiveData<Location> getLocationById(@NonNull Long locationId) {
+        return personalDevelopmentDatabase.locationDao().getLocationById(locationId);
+    }
+
+    public void deleteLocationById(@NonNull Long locationId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.locationDao().deleteLocationById(locationId));
+    }
+
+    public void updateLocations(Location... locations) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.locationDao().update(locations));
+    }
+
+    public void insertLocations(Location... locations) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.locationDao().insert(locations));
     }
 }

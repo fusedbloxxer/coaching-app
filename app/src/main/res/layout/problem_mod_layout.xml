@@ -124,11 +124,11 @@
                 app:layout_constraintTop_toTopOf="@+id/problem_button_cancel" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/problem_original_coach_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Coach"
+                android:text="@string/coach"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/problem_spinner_coach"
                 app:layout_constraintEnd_toEndOf="@+id/problem_spinner_coach"
@@ -136,15 +136,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/problem_state_edit_text" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/problem_original_client_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Client"
+                android:text="@string/client"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/problem_spinner_client"
                 app:layout_constraintEnd_toEndOf="@+id/problem_spinner_client"
                 app:layout_constraintStart_toStartOf="@+id/problem_spinner_client"
-                app:layout_constraintTop_toTopOf="@+id/textView5" />
+                app:layout_constraintTop_toTopOf="@+id/problem_original_coach_text_view" />
+
+            <TextView
+                android:id="@+id/problem_id_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/problem_title_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:text="ID: 252524" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

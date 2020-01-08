@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.faculty.fusedbloxxer.coachingapp.home.locations.LocationModFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/location_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/location_title"
+                android:textAlignment="center"
+                android:textAppearance="@style/ModTitle"
+                app:layout_constraintBottom_toTopOf="@+id/location_street_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/location_street_edit_text"
+                app:layout_constraintStart_toStartOf="@+id/location_street_edit_text"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/location_street_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="@string/location_street_hint"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/location_alias_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/location_alias_edit_text"
+                app:layout_constraintStart_toStartOf="@+id/location_alias_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/location_text_view" />
+
+            <EditText
+                android:id="@+id/location_alias_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/location_alias_hint"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/location_image_url_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/location_image_url_edit_text"
+                app:layout_constraintStart_toStartOf="@+id/location_image_url_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/location_street_edit_text" />
+
+            <EditText
+                android:id="@+id/location_image_url_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/location_image_url_hint"
+                android:inputType="textUri"
+                app:layout_constraintBottom_toTopOf="@+id/location_cancel_button"
+                app:layout_constraintEnd_toEndOf="@+id/location_accept_button"
+                app:layout_constraintStart_toStartOf="@+id/location_cancel_button"
+                app:layout_constraintTop_toBottomOf="@+id/location_alias_edit_text" />
+
+            <Button
+                android:id="@+id/location_cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:onClick="@{()->fragment.onCancel()}"
+                android:text="@string/anuleaza"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/location_accept_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location_image_url_edit_text" />
+
+            <Button
+                android:id="@+id/location_accept_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{()->fragment.onAccept()}"
+                android:text="@string/accepta"
+                app:layout_constraintBottom_toBottomOf="@+id/location_cancel_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/location_cancel_button"
+                app:layout_constraintTop_toTopOf="@+id/location_cancel_button" />
+
+            <TextView
+                android:id="@+id/location_id_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/location_street_edit_text"
+                app:layout_constraintEnd_toEndOf="@+id/location_text_view"
+                app:layout_constraintStart_toStartOf="@+id/location_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/location_text_view"
+                tools:text="ID: 252525" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
