@@ -281,7 +281,8 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     }
 
     public void deleteFeedbackById(Long feedbackId) {
-        personalDevelopmentDatabase.feedbackDao().deleteFeedbackById(feedbackId);
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.feedbackDao().deleteFeedbackById(feedbackId));
     }
 
     public LiveData<Long> isFeedbackConfirmed(Long feedbackId) {
@@ -298,5 +299,19 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
 
     public LiveData<User> getUserWithFeedbackId(Long feedbackId) {
         return personalDevelopmentDatabase.userDao().getUserWithFeedbackId(feedbackId);
+    }
+
+    public LiveData<List<Long>> getIdsForSessionsWithoutFeedback() {
+        return personalDevelopmentDatabase.sessionDao().getIdsForSessionsWithoutFeedback();
+    }
+
+    public void insertFeedbacks(Feedback... feedbacks) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.feedbackDao().insert(feedbacks));
+    }
+
+    public void updateFeedbacks(Feedback... feedbacks) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.feedbackDao().update(feedbacks));
     }
 }

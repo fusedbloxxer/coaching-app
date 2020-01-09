@@ -49,9 +49,9 @@
             android:paddingLeft="8dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintBottom_toTopOf="@+id/feedback_title_text_view"
-            app:layout_constraintEnd_toEndOf="@+id/feedback_verified_checkbox"
-            app:layout_constraintStart_toStartOf="@+id/feedback_verified_checkbox"
-            app:layout_constraintTop_toBottomOf="@+id/feedback_verified_checkbox"
+            app:layout_constraintEnd_toEndOf="@+id/feedback_verified_text_view"
+            app:layout_constraintStart_toStartOf="@+id/feedback_verified_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/feedback_verified_text_view"
             tools:text="Titlu sau id sedinta" />
 
         <TextView
@@ -66,11 +66,10 @@
             app:layout_constraintTop_toBottomOf="@+id/feedback_content_text_view"
             tools:text="A fost emis la data 20.34.2505" />
 
-        <CheckBox
-            android:id="@+id/feedback_verified_checkbox"
+        <TextView
+            android:id="@+id/feedback_verified_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:padding="8dp"
             android:textColor="@android:color/holo_green_dark"
             app:layout_constraintBottom_toTopOf="@+id/feedback_session_text_view"

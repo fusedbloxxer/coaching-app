@@ -11,7 +11,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Utils {
-
+    public static final String DATE_FORMAT = "E, dd MMM yyyy HH:mm:ss";
     public static final String SORT_TITLE = "Sorteaza dupa: ";
 
     public static Date timestamp() {

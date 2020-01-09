@@ -33,7 +33,7 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull FeedbackViewHolder holder, int position) {
         Feedback feedback = mFeedbacks.get(position);
-        holder.setConfimedFeedback(feedback.getFeedbackId());
+        holder.setFeedbackId(feedback.getFeedbackId());
         holder.setSessionId(feedback.getSessionId());
         holder.setTitle(feedback.getTitle());
         holder.setRating(feedback.getRating());

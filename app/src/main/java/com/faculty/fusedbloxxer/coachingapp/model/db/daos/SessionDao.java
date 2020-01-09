@@ -13,10 +13,13 @@ import java.util.List;
 public abstract class SessionDao implements BaseDao<Session> {
     @Query(" SELECT * " +
             "FROM sedinte " +
-            "WHERE NOT EXISTS(SELECT * " +
-            "                 FROM feedbacks " +
-            "                 WHERE feedbacks.id_sedinta = sedinte.id_sedinta)")
+            "WHERE id_sedinta NOT IN(SELECT id_sedinta FROM feedbacks)")
     public abstract LiveData<List<Session>> getSessionsWithoutFeedback();
+
+    @Query("SELECT id_sedinta " +
+            "FROM sedinte " +
+            "WHERE id_sedinta NOT IN(SELECT id_sedinta FROM feedbacks)")
+    public abstract LiveData<List<Long>> getIdsForSessionsWithoutFeedback();
 
     @Query(" SELECT * " +
             "FROM sedinte " +

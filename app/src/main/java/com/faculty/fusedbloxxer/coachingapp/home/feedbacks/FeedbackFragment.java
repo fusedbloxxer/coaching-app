@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import java.util.List;
 public class FeedbackFragment extends TableFragment<Long> {
 
     private FeedbackAdapter mFeedbackAdapter;
+    private boolean mInsertable;
 
     @Nullable
     @Override
@@ -29,6 +31,8 @@ public class FeedbackFragment extends TableFragment<Long> {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView.setAdapter(mFeedbackAdapter = new FeedbackAdapter(this));
+        vm.getIdsForSessionsWithoutFeedback().observe(this, longs ->
+                mInsertable = longs != null && longs.size() > 0);
     }
 
     @Override
@@ -176,7 +180,12 @@ public class FeedbackFragment extends TableFragment<Long> {
 
     @Override
     protected void onFabClick() {
-        navController.navigate(FeedbackFragmentDirections.actionFeedbacksToFeedbackModFragment());
+        if (mInsertable) {
+            navController.navigate(FeedbackFragmentDirections.actionFeedbacksToFeedbackModFragment());
+        } else {
+            Toast.makeText(getContext(), "Nu exista sesiune pentru care sa poti da feedback.", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
     @Override

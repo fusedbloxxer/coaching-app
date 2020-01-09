@@ -34,7 +34,9 @@ import static com.faculty.fusedbloxxer.coachingapp.utilities.Utils.timestamp;
                 )
         },
         indices = {
-                @Index(value = {"id_sedinta", "id_sarcina"}, unique = true)
+                @Index(value = {"id_sedinta", "id_sarcina"}, unique = true),
+                @Index(value = "id_sedinta"),
+                @Index(value = "id_sarcina")
         }
 )
 public class SessionTask {

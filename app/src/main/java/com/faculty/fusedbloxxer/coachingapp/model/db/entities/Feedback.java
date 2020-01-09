@@ -8,7 +8,11 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.faculty.fusedbloxxer.coachingapp.utilities.Utils;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static androidx.room.ForeignKey.CASCADE;
 import static com.faculty.fusedbloxxer.coachingapp.utilities.Utils.randomNumber;
@@ -125,6 +129,11 @@ public class Feedback {
 
     public void setSessionId(@NonNull Long sessionId) {
         this.sessionId = sessionId;
+    }
+
+    @Ignore
+    public String getFormattedDate() {
+        return new SimpleDateFormat(Utils.DATE_FORMAT, Locale.ENGLISH).format(sentDate);
     }
 
     @NonNull

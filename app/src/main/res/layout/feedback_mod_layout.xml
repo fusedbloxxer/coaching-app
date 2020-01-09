@@ -57,7 +57,7 @@
                 android:hint="@string/feedback_title_hint"
                 android:inputType="textPersonName"
                 android:singleLine="true"
-                app:layout_constraintBottom_toTopOf="@+id/ratingBar"
+                app:layout_constraintBottom_toTopOf="@+id/feedback_rating_bar"
                 app:layout_constraintEnd_toEndOf="@+id/feedback_text_view"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/feedback_text_view"
@@ -75,10 +75,10 @@
                 app:layout_constraintBottom_toTopOf="@+id/feedback_emission_date_text_view"
                 app:layout_constraintEnd_toEndOf="@+id/feedback_title_edit_text"
                 app:layout_constraintStart_toStartOf="@+id/feedback_title_edit_text"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+                app:layout_constraintTop_toBottomOf="@+id/feedback_rating_bar" />
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/feedback_rating_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

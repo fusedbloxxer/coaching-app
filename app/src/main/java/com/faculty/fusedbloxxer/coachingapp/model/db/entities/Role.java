@@ -73,7 +73,11 @@ public class Role {
                 if (sRoles == null) {
                     sRoles = new Role[]{
                             new Role("https://media.istockphoto.com/vectors/retention-icon-vector-id961056084?k=6&m=961056084&s=170667a&w=0&h=bs1xfnZO3qBiRdRDacXUQ-KVVXgIIjE4RZJFrkUwz5g=", "Persoana care isi doreste sa se dezvolte personal si sa ajunga departe in viata.", "client"),
-                            new Role("https://imageog.flaticon.com/icons/png/512/939/939286.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF", "Persoana care a acumulat experienta in viata si stie cum sa abordeze o gama larga de probleme. Este dispus sa ii ajute pe ceilalti si sa ii ghideze catre o viata mult mai buna.", "coach")
+                            new Role("https://imageog.flaticon.com/icons/png/512/939/939286.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF", "Persoana care a acumulat experienta in viata si stie cum sa abordeze o gama larga de probleme. Este dispus sa ii ajute pe ceilalti si sa ii ghideze catre o viata mult mai buna.", "coach"),
+                            new Role("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCefJdPS7xbEFEN0CgkhgBrdcN39bnu4gktnfBGRcjkOj6dYf1&s", "Persoana care se ocupa cu tranzactiile financiare care au loc intre client si coach.", "contabil"),
+                            new Role("https://image.flaticon.com/icons/png/512/69/69114.png", "Persoana care ii ghideaza pe utilizatorii aplicatiei atunci cand intampina dificultati tehnice.", "ajutor_tehnic"),
+                            new Role("https://image.flaticon.com/icons/png/512/1465/1465611.png", "Persoana care se ocupa cu dezvoltarea aplicatiei: adaugare de optiuni noi, repararea erorilor care apar, extinderea si intretinerea aplicatiei.", "programator"),
+                            new Role("https://image.flaticon.com/icons/png/512/857/premium/857138.png", "Persoana care vine cu noi strategii de promovare a serviciilor curente, precum si a celor noi. Acest rol este unul esential deoarece influenteaza in mod direct numarul de potentiali utilizatori pe care ii poate avea aplicatia, dupa ce aceasta este lansata.", "vanzator")
                     };
                 }
             }

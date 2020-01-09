@@ -205,6 +205,12 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
                     "\t\"id_sedinta\",\n" +
                     "\t\"id_material\"\n" +
                     ");");
+            db.execSQL("CREATE INDEX \"index_atasate_la_id_sedinta\" ON \"atasate_la\" (\n" +
+                    "\t\"id_sedinta\"\n" +
+                    ");");
+            db.execSQL("CREATE INDEX \"index_atasate_la_id_material\" ON \"atasate_la\" (\n" +
+                    "\t\"id_material\"\n" +
+                    ");");
 
             db.execSQL("DROP TABLE includ");
             db.execSQL("CREATE TABLE \"includ\" (\n" +
@@ -218,6 +224,12 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
                     ");");
             db.execSQL("CREATE UNIQUE INDEX \"index_includ_id_sedinta_id_sarcina\" ON \"includ\" (\n" +
                     "\t\"id_sedinta\",\n" +
+                    "\t\"id_sarcina\"\n" +
+                    ");");
+            db.execSQL("CREATE INDEX \"index_includ_id_sedinta\" ON \"includ\" (\n" +
+                    "\t\"id_sedinta\"\n" +
+                    ");");
+            db.execSQL("CREATE INDEX \"index_includ_id_sarcina\" ON \"includ\" (\n" +
                     "\t\"id_sarcina\"\n" +
                     ");");
 

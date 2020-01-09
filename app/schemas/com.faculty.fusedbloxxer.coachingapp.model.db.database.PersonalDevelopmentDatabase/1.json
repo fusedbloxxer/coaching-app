@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b50e4f25c32da4b93f3fae1078045bb9",
+    "identityHash": "fca4c548e93a9cff9a20472909e4703e",
     "entities": [
       {
         "tableName": "roluri",
@@ -416,6 +416,22 @@
               "id_material"
             ],
             "createSql": "CREATE UNIQUE INDEX `index_atasate_la_id_sedinta_id_material` ON `${TABLE_NAME}` (`id_sedinta`, `id_material`)"
+          },
+          {
+            "name": "index_atasate_la_id_sedinta",
+            "unique": false,
+            "columnNames": [
+              "id_sedinta"
+            ],
+            "createSql": "CREATE  INDEX `index_atasate_la_id_sedinta` ON `${TABLE_NAME}` (`id_sedinta`)"
+          },
+          {
+            "name": "index_atasate_la_id_material",
+            "unique": false,
+            "columnNames": [
+              "id_material"
+            ],
+            "createSql": "CREATE  INDEX `index_atasate_la_id_material` ON `${TABLE_NAME}` (`id_material`)"
           }
         ],
         "foreignKeys": [
@@ -488,6 +504,22 @@
               "id_sarcina"
             ],
             "createSql": "CREATE UNIQUE INDEX `index_includ_id_sedinta_id_sarcina` ON `${TABLE_NAME}` (`id_sedinta`, `id_sarcina`)"
+          },
+          {
+            "name": "index_includ_id_sedinta",
+            "unique": false,
+            "columnNames": [
+              "id_sedinta"
+            ],
+            "createSql": "CREATE  INDEX `index_includ_id_sedinta` ON `${TABLE_NAME}` (`id_sedinta`)"
+          },
+          {
+            "name": "index_includ_id_sarcina",
+            "unique": false,
+            "columnNames": [
+              "id_sarcina"
+            ],
+            "createSql": "CREATE  INDEX `index_includ_id_sarcina` ON `${TABLE_NAME}` (`id_sarcina`)"
           }
         ],
         "foreignKeys": [
@@ -692,7 +724,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b50e4f25c32da4b93f3fae1078045bb9\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"fca4c548e93a9cff9a20472909e4703e\")"
     ]
   }
 }
