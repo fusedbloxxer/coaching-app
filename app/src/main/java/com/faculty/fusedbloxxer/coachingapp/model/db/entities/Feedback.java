@@ -164,7 +164,26 @@ public class Feedback {
                             new Feedback(timestamp(), randomNumber(5), "Nu stiu daca as mai veni", "Nu-s sigur", 2L),
                             new Feedback(timestamp(), randomNumber(5), "Nu ati fost foarte serios", "Un mascarici", 1L),
                             new Feedback(timestamp(), randomNumber(5), "A fost o experienta placuta.", "A fost decent", 6L),
-                            new Feedback(timestamp(), randomNumber(5), "Toate sarcinile mi-au trezit talentele ascunse", "O sa mai merg", 7L)
+                            new Feedback(timestamp(), randomNumber(5), "Toate sarcinile mi-au trezit talentele ascunse", "O sa mai merg", 7L),
+                            new Feedback(timestamp(), randomNumber(5), "«:::A:::» «:::W:::» «:::E:::» «:::S:::» «:::O:::» «:::M:::» «:::E:::»", "Super experienta", 9L),
+                            new Feedback(timestamp(), randomNumber(5), "«:::A:::» «:::W:::» «:::E:::» «:::S:::» «:::O:::» «:::M:::» «:::E:::»", "Misto", 10L),
+                            new Feedback(timestamp(), randomNumber(5), "-: ¦: - •: * '*: • .-: ¦: - • ❧ FABULOUS ❧ -: ¦: - ❧ RECOMAND-: ¦: - •: *' *: • .-: ¦: -", "Cool", 11L),
+                            new Feedback(timestamp(), randomNumber(5), "★˜¨¨¯¯¨¨˜¤.¸`*•.¸*•¸★☆☆Thank you☆☆★¸•*¸.•*´¸.¤˜¨¨¯¯¨¨˜★", "Ok", 12L),
+                            new Feedback(timestamp(), randomNumber(5), "F ***** I ***** V ***** E ***** S ***** T ***** A ***** R ***** S", "WOW", 13L),
+                            new Feedback(timestamp(), randomNumber(5), "♥♥♥¨¨*:•.EXCELLENT.•:*¨¨*:•.COACH.•:*¨¨*:•.THANKS•:*¨¨♥♥♥", "Super bun!", 14L),
+                            new Feedback(timestamp(), randomNumber(5), "Experiență de excepție!", "Mi-a placut", 15L),
+                            new Feedback(timestamp(), randomNumber(5), "PERFECT º¤ø, ¸¸, ø¤COACH¤ø, ¸¸, ¸, øºø, ¸, ø¤SUPER ¤ø, ¸¸, ø¤º RECOMANDAT", "Mai vin !", 16L),
+                            new Feedback(timestamp(), randomNumber(5), "♣♥¨¨♥:•..•:* Coach Absolutely Stellar*:•..•:♥¨¨♥♣", "Cum de nu te-am intalnit pana acum ?", 17L),
+                            new Feedback(timestamp(), randomNumber(5), "+ _¯_¯_¯_¯_¦¦¦¦ NUMĂRUL 1 ! ||||_¯_¯_¯_¯_ +", "Grozav", 56L),
+                            new Feedback(timestamp(), randomNumber(5), "Mulțumiri. Serviciu excelent.", "Prea ok", 55L),
+                            new Feedback(timestamp(), 5.0f, "★★★★★ CINCI STELE ★★★★★", "Genial", 22L),
+                            new Feedback(timestamp(), randomNumber(5), ".•:*¨¨*:•.A.•:*¨¨*:•.FIVE.•:*¨¨*:•.STAR.•:*¨¨*:•..•:*¨¨*:•.", "FANTASTIC !", 23L),
+                            new Feedback(timestamp(), randomNumber(5), "▄▀▄▀▄▀▄▀▄▀▄▀█▓▒░M░E░R░C░I░▒▓█▀▄▀▄▀▄▀▄▀▄▀▄", "Fenomenal ;)", 25L),
+                            new Feedback(timestamp(), randomNumber(5), "★˜¨¨¯¯¨¨˜¤.¸`*•.¸*•¸★☆☆Thank you☆☆★¸•*¸.•*´¸.¤˜¨¨¯¯¨¨˜★", "Grozaaaav !!", 26L),
+                            new Feedback(timestamp(), randomNumber(5), "Ƹ̵̡Ӝ̵̨̄Ʒ ~~ UNUL dintre cei mai buni antrenori! ~~ Ƹ̵̡Ӝ̵̨̄Ʒ", "Faaantasticoo", 27L),
+                            new Feedback(timestamp(), randomNumber(5), "*:☯.Thank You!.•:*¨¨*:•. Highly Recommend•:*¨¨*:☯.", "Mi-ai schimbat viata", 28L),
+                            new Feedback(timestamp(), randomNumber(5), "Sper să te ocupi din nou. Mulțumesc.", "GOOOOOOD", 44L),
+                            new Feedback(timestamp(), randomNumber(5), "«E» «X» «C» «E» «L» «L» «E» «N» «T»", "Minunat", 33L)
                     };
                 }
             }
