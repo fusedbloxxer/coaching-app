@@ -13,6 +13,7 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Material;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Session;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Task;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
 
@@ -421,5 +422,68 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
 
     public LiveData<List<Long>> getAllTaskIds() {
         return personalDevelopmentDatabase.taskDao().getAllTaksIds();
+    }
+
+    public LiveData<List<Task>> getAllTasks() {
+        return personalDevelopmentDatabase.taskDao().getAllTasks();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByIdAsc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByIdAsc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByIdDesc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByIdDesc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByTitleAsc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByTitleAsc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByTitleDesc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByTitleDesc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByScoreAsc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByScoreAsc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByScoreDesc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByScoreDesc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByDescriptionLenAsc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByDescriptionLenAsc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByDescriptionLenDesc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByDescriptionLenDesc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByTimeAsc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByTimeAsc();
+    }
+
+    public LiveData<List<Task>> getTasksSortedByTimeDesc() {
+        return personalDevelopmentDatabase.taskDao().getTasksSortedByTimeDesc();
+    }
+
+    public LiveData<Task> getTaskWithId(@NonNull Long taskId) {
+        return personalDevelopmentDatabase.taskDao().getTaskWithId(taskId);
+    }
+
+    public void deteleTaskWithId(@NonNull Long taskId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.taskDao().deteleTaskWithId(taskId));
+    }
+
+    public void insertTasks(Task... tasks) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.taskDao().insert(tasks));
+    }
+
+    public void updateTasks(Task... tasks) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.taskDao().update(tasks));
     }
 }

@@ -51,4 +51,10 @@
     <string name="insert_estimated_time">O: Introduceti un timp estimat</string>
     <string name="task_history">Istoric sarcina</string>
     <string name="hint_description">Descriere . . .</string>
+    <string name="generated_text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu non diam phasellus vestibulum. Neque viverra justo nec ultrices dui sapien eget. Sem et tortor consequat id. Viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas. Habitant morbi tristique senectus et. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet.</string>
+    <string name="insert_task_hint">Introduceti titlul sarcinii</string>
+    <string name="insert_task_score_hint">O: Introduceti scorul acestei sarcini</string>
+    <string name="task_time_hint">O: Introduceti un timp estimativ.</string>
+    <string name="task_desc_hint">Introduceti o scurta descriere</string>
+    <string name="sarcina">Sarcina</string>
 </resources>

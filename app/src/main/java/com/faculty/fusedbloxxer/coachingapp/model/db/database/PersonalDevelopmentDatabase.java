@@ -235,7 +235,7 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
 
             db.execSQL("DROP TABLE sarcini");
             db.execSQL("CREATE TABLE \"sarcini\" (\n" +
-                    "\t\"timp_estimat\"\tINTEGER,\n" +
+                    "\t\"timp_estimat\"\tINTEGER CHECK(timp_estimat >= 0),\n" +
                     "\t\"descriere\"\tTEXT NOT NULL,\n" +
                     "\t\"puncte_premiu\"\tINTEGER CHECK(puncte_premiu BETWEEN 0 AND 100),\n" +
                     "\t\"titlu\"\tTEXT NOT NULL,\n" +
