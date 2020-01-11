@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_history_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#645E9D"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task_history_id_date_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:elevation="12dp"
+            app:cardBackgroundColor="#99D5C9"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toTopOf="@id/task_history_rating_card_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent">
+
+                <TextView
+                    android:id="@+id/task_history_id_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@android:color/white"
+                    tools:text="ID" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="#392B58" />
+
+                <TextView
+                    android:id="@+id/task_history_date_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@android:color/white"
+                    tools:text="DATE" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task_history_rating_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:elevation="12dp"
+            app:cardBackgroundColor="#6C969D"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toTopOf="@id/task_history_commentary_card_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/task_history_id_date_card_view">
+
+            <RatingBar
+                android:id="@+id/task_history_rating"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="10"
+                android:padding="8dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task_history_commentary_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:elevation="12dp"
+            app:cardBackgroundColor="#392B58"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/task_history_rating_card_view">
+
+            <TextView
+                android:id="@+id/task_history_commentary_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="@android:color/white"
+                tools:text="COMMENTARY" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

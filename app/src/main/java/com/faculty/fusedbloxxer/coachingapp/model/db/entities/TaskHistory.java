@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 
 import java.util.Date;
@@ -56,6 +57,19 @@ public class TaskHistory {
         this.confidenceRating = confidenceRating;
         this.taskId = taskId;
         this.completionDate = completionDate;
+    }
+
+    @Ignore
+    public TaskHistory(String comment, Long confidenceRating) {
+        this.comment = comment;
+        this.confidenceRating = confidenceRating;
+    }
+
+    @Ignore
+    public TaskHistory(String comment, Long confidenceRating, @NonNull Long taskId) {
+        this.comment = comment;
+        this.confidenceRating = confidenceRating;
+        this.taskId = taskId;
     }
 
     public String getComment() {

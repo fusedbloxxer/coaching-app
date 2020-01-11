@@ -1,16 +1,13 @@
 package com.faculty.fusedbloxxer.coachingapp.core;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.faculty.fusedbloxxer.coachingapp.model.PersonalDevelopmentViewModel;
-import com.faculty.fusedbloxxer.coachingapp.model.db.database.PersonalDevelopmentDatabase;
 
 public abstract class ModFragment extends BaseFragment {
     protected PersonalDevelopmentViewModel vm;

@@ -49,4 +49,6 @@
     <string name="insert_summary">O: Scrieti un scurt rezumat</string>
     <string name="insert_image_url">O: Introduceti link catre imagine</string>
     <string name="insert_estimated_time">O: Introduceti un timp estimat</string>
+    <string name="task_history">Istoric sarcina</string>
+    <string name="hint_description">Descriere . . .</string>
 </resources>

@@ -13,6 +13,7 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Material;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Session;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
 
 import java.util.List;
@@ -361,5 +362,64 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void insertMaterials(Material... materials) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.materialDao().insert(materials));
+    }
+
+    public LiveData<List<TaskHistory>> getAllTasksHistory() {
+        return personalDevelopmentDatabase.taskHistoryDao().getAllTasksHistory();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByDateAsc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByDateAsc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByDateDesc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByDateDesc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByRatingAsc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByRatingAsc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByRatingDesc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByRatingDesc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByCommentLenAsc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByCommentLenAsc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByCommentLenDesc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByCommentLenDesc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByTaskIdAsc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByTaskIdAsc();
+    }
+
+    public LiveData<List<TaskHistory>> getTasksHistorySortedByTaskIdDesc() {
+        return personalDevelopmentDatabase.taskHistoryDao().getTasksHistorySortedByTaskIdDesc();
+    }
+
+    public LiveData<TaskHistory> getTaskHistoryByTaskIdAndDate(@NonNull Long taskId, @NonNull Long date) {
+        return personalDevelopmentDatabase.taskHistoryDao().getTaskHistoryByTaskIdAndDate(taskId, date);
+    }
+
+    public void deleteTaskHistoryByTaskIdAndDate(@NonNull Long taskId, @NonNull Long date) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.taskHistoryDao().deleteTaskHistoryByTaskIdAndDate(taskId, date));
+    }
+
+    public void insertTasksHistory(TaskHistory... taskHistories) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.taskHistoryDao().insert(taskHistories));
+    }
+
+    public void updateTasksHistory(TaskHistory... taskHistories) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.taskHistoryDao().update(taskHistories));
+    }
+
+    public LiveData<List<Long>> getAllTaskIds() {
+        return personalDevelopmentDatabase.taskDao().getAllTaksIds();
     }
 }
