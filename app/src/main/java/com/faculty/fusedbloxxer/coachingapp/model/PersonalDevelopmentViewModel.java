@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.faculty.fusedbloxxer.coachingapp.model.db.database.PersonalDevelopmentDatabase;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Feedback;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Location;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Material;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Session;
@@ -313,5 +314,52 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void updateFeedbacks(Feedback... feedbacks) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.feedbackDao().update(feedbacks));
+    }
+
+    public LiveData<List<Material>> getAllMaterials() {
+        return personalDevelopmentDatabase.materialDao().getAllMaterials();
+    }
+
+    public LiveData<List<Material>> getMaterialsSortedByTimeAsc() {
+        return personalDevelopmentDatabase.materialDao().getMaterialsSortedByTimeAsc();
+    }
+
+    public LiveData<List<Material>> getMaterialsSortedByTimeDesc() {
+        return personalDevelopmentDatabase.materialDao().getMaterialsSortedByTimeDesc();
+    }
+
+    public LiveData<List<Material>> getMaterialsSortedByTitleAsc() {
+        return personalDevelopmentDatabase.materialDao().getMaterialsSortedByTitleAsc();
+    }
+
+    public LiveData<List<Material>> getMaterialsSortedByTitleDesc() {
+        return personalDevelopmentDatabase.materialDao().getMaterialsSortedByTitleDesc();
+    }
+
+    public LiveData<List<Material>> getMaterialsSortedByIdAsc() {
+        return personalDevelopmentDatabase.materialDao().getMaterialsSortedByIdAsc();
+    }
+
+    public LiveData<List<Material>> getMaterialsSortedByIdDesc() {
+        return personalDevelopmentDatabase.materialDao().getMaterialsSortedByIdDesc();
+    }
+
+    public void deleteMaterialById(@NonNull Long materialId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.materialDao().deleteMaterialById(materialId));
+    }
+
+    public LiveData<Material> getMaterialWithId(@NonNull Long materialId) {
+        return personalDevelopmentDatabase.materialDao().getMaterialWithId(materialId);
+    }
+
+    public void updateMaterials(Material... materials) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.materialDao().update(materials));
+    }
+
+    public void insertMaterials(Material... materials) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.materialDao().insert(materials));
     }
 }

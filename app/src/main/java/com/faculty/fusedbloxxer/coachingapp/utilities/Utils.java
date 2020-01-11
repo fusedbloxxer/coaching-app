@@ -4,11 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-
 import com.faculty.fusedbloxxer.coachingapp.home.INavigable;
 
-import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -51,38 +48,14 @@ public class Utils {
     }
 
     public static <T> void createItemOptions(final Context context, INavigable<T> listener, T elementId) {
+        createItemOptions(context, listener, elementId, getItemOptions());
+    }
+
+    public static <T> void createItemOptions(final Context context, INavigable<T> listener, T elementId, String[] options) {
         new AlertDialog.Builder(context)
                 .setTitle("Optiuni:")
-                .setItems(getItemOptions(), (dialogInterface, i) -> listener.updateOrDelete(elementId, i))
+                .setItems(options, (dialogInterface, i) -> listener.updateOrDelete(elementId, i))
                 .create()
                 .show();
-    }
-
-    private static Class previousClass;
-    private static int count = 0;
-
-    public static String generateString(Class currentClass, @NonNull String string) {
-        if (currentClass != previousClass) {
-            count = 0;
-            currentClass = previousClass;
-        }
-
-        if (string != null) {
-            return string + "_" + ++count;
-        }
-
-        throw new RuntimeException("STRING IS NULL !");
-    }
-
-    public static  <T> T[] concatenate(T[] a, T[] b) {
-        int aLen = a.length;
-        int bLen = b.length;
-
-        @SuppressWarnings("unchecked")
-        T[] c = (T[]) Array.newInstance(a.getClass().getComponentType(), aLen + bLen);
-        System.arraycopy(a, 0, c, 0, aLen);
-        System.arraycopy(b, 0, c, aLen, bLen);
-
-        return c;
     }
 }

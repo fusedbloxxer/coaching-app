@@ -43,4 +43,10 @@
     <string name="feedback_title_hint">Introduceti un titlu</string>
     <string name="feedback_content_hint">Spuneti-va parerea despre sedinta</string>
     <string name="feedback">Feedback</string>
+    <string name="material_">Material</string>
+    <string name="insert_title">Introduceti un titlu</string>
+    <string name="insert_source">Introduceti link-ul catre sursă</string>
+    <string name="insert_summary">O: Scrieti un scurt rezumat</string>
+    <string name="insert_image_url">O: Introduceti link catre imagine</string>
+    <string name="insert_estimated_time">O: Introduceti un timp estimat</string>
 </resources>
