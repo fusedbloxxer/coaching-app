@@ -14,6 +14,7 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Session;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionMaterial;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionTask;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Task;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
@@ -536,7 +537,6 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
                 personalDevelopmentDatabase.sessionDao().update(sessions));
     }
 
-
     public LiveData<List<SessionMaterial>> getAllSessionsMaterials() {
         return personalDevelopmentDatabase.sessionMaterialDao().getAllSessionsMaterials();
     }
@@ -579,5 +579,44 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void updateSessionMaterialByIds(@NonNull Long sessionId, @NonNull Long materialId, @NonNull Date initialDate, Long availableTime) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.sessionMaterialDao().updateSessionMaterialByIds(sessionId, materialId, initialDate, availableTime));
+    }
+
+    public LiveData<List<SessionTask>> getAllSessionsTasks() {
+        return personalDevelopmentDatabase.sessionTaskDao().getAllSessionsTasks();
+    }
+
+    public LiveData<List<SessionTask>> getSessionsTasksSortedByDateAsc() {
+        return personalDevelopmentDatabase.sessionTaskDao().getSessionsTasksSortedByDateAsc();
+    }
+
+    public LiveData<List<SessionTask>> getSessionsTasksSortedByDateDesc() {
+        return personalDevelopmentDatabase.sessionTaskDao().getSessionsTasksSortedByDateDesc();
+    }
+
+    public LiveData<List<SessionTask>> getSessionsTasksSortedByPriorityAsc() {
+        return personalDevelopmentDatabase.sessionTaskDao().getSessionsTasksSortedByPriorityAsc();
+    }
+
+    public LiveData<List<SessionTask>> getSessionsTasksSortedByPriorityDesc() {
+        return personalDevelopmentDatabase.sessionTaskDao().getSessionsTasksSortedByPriorityDesc();
+    }
+
+    public LiveData<SessionTask> getSessionTaskByIds(@NonNull Long sessionId, @NonNull Long taskId) {
+        return personalDevelopmentDatabase.sessionTaskDao().getSessionTaskByIds(sessionId, taskId);
+    }
+
+    public void deleteSessionTaskByIds(@NonNull Long sessionId, @NonNull Long taskId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionTaskDao().deleteSessionTaskByIds(sessionId, taskId));
+    }
+
+    public void insertSessionsTasks(SessionTask... sessionTasks) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionTaskDao().insert(sessionTasks));
+    }
+
+    public void updateSessionsTasks(SessionTask... sessionTasks) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionTaskDao().update(sessionTasks));
     }
 }

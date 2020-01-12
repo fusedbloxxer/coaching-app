@@ -1,4 +1,4 @@
-package com.faculty.fusedbloxxer.coachingapp.home.sessionsmaterials;
+package com.faculty.fusedbloxxer.coachingapp.home.sessionstasks;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -17,8 +17,8 @@ import androidx.annotation.RequiresApi;
 
 import com.faculty.fusedbloxxer.coachingapp.R;
 import com.faculty.fusedbloxxer.coachingapp.core.ModFragment;
-import com.faculty.fusedbloxxer.coachingapp.databinding.SessionsMaterialsModLayoutBinding;
-import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionMaterial;
+import com.faculty.fusedbloxxer.coachingapp.databinding.SessionsTasksModLayoutBinding;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionTask;
 import com.faculty.fusedbloxxer.coachingapp.utilities.Utils;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -28,24 +28,24 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class SessionMaterialModFragment extends ModFragment {
-    private TextInputEditText mStartDateTextInputEditText, mAvailableTimeTextInputEditText;
-    private LinearLayout mSessionLinearLayout, mMaterialLinearLayout;
-    private Spinner mSessionSpinner, mMaterialSpinner;
+public class SessionTaskModFragment extends ModFragment {
+    private TextInputEditText mStartDateTextInputEditText, mPriorityTextInputEditText;
+    private LinearLayout mSessionLinearLayout, mTaskLinearLayout;
+    private Spinner mSessionSpinner, mTaskSpinner;
     private TextView mPrimaryKeyTextView;
-    private Long mSessionId, mMaterialId;
+    private Long mSessionId, mTaskId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        SessionsMaterialsModLayoutBinding sessionsMaterialsModLayoutBinding = SessionsMaterialsModLayoutBinding
+        SessionsTasksModLayoutBinding sessionsMaterialsModLayoutBinding = SessionsTasksModLayoutBinding
                 .inflate(inflater, container, false);
         sessionsMaterialsModLayoutBinding.setFragment(this);
         return sessionsMaterialsModLayoutBinding.getRoot();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         vm.getAllSessions().observe(this, sessions ->
@@ -59,13 +59,14 @@ public class SessionMaterialModFragment extends ModFragment {
                         )
                 )
         );
-        vm.getAllMaterials().observe(this, materials ->
-                mMaterialSpinner.setAdapter(
+
+        vm.getAllTasks().observe(this, tasks ->
+                mTaskSpinner.setAdapter(
                         new ArrayAdapter<>(
                                 Objects.requireNonNull(getContext()),
                                 android.R.layout.simple_spinner_dropdown_item,
-                                materials.stream()
-                                        .map(material -> material.getMaterialId().toString())
+                                tasks.stream()
+                                        .map(task -> task.getTaskId().toString())
                                         .collect(Collectors.toList())
                         )
                 )
@@ -83,25 +84,27 @@ public class SessionMaterialModFragment extends ModFragment {
             final String startDate = Objects.requireNonNull(mStartDateTextInputEditText.getText()).toString();
 
             try {
-                Long availableTime = null;
+                Long priority = null;
+
                 try {
-                    availableTime = getAvailableTime();
-                } catch (Exception e) {
-                    mAvailableTimeTextInputEditText.setError("Timpul nu poate fi negativ !");
+                    priority = getPriority();
+                } catch (Exception ex) {
+                    mPriorityTextInputEditText.setError("Prioriatatea este cuprins intre 0 si 10 !");
                     return;
                 }
 
-                final SessionMaterial sessionMaterial = new SessionMaterial(
-                        availableTime,
+                SessionTask sessionTask = new SessionTask(
+                        priority,
                         Objects.requireNonNull(new SimpleDateFormat(Utils.DATE_FORMAT, Locale.ENGLISH).parse(startDate)),
                         conditionalPick(mSessionSpinner, mSessionId),
-                        conditionalPick(mMaterialSpinner, mMaterialId)
+                        conditionalPick(mTaskSpinner, mTaskId)
                 );
 
-                if (mSessionId != null && mMaterialId != null) {
-                    vm.updateSessionsMaterials(sessionMaterial);
+
+                if (mSessionId != null && mTaskId != null) {
+                    vm.updateSessionsTasks(sessionTask);
                 } else {
-                    vm.insertSessionsMaterials(sessionMaterial);
+                    vm.insertSessionsTasks(sessionTask);
                 }
 
                 onCancel();
@@ -112,44 +115,45 @@ public class SessionMaterialModFragment extends ModFragment {
                         .show();
             }
         }
+
     }
 
-    private Long getAvailableTime() throws Exception {
-        Long availableTime = null;
+    private Long getPriority() throws Exception {
+        Long priority = null;
 
-        if (Objects.requireNonNull(mAvailableTimeTextInputEditText.getText()).length() > 0) {
-            availableTime = Long.parseLong(mAvailableTimeTextInputEditText.getText().toString());
+        if (Objects.requireNonNull(mPriorityTextInputEditText.getText()).length() > 0) {
+            priority = Long.parseLong(mPriorityTextInputEditText.getText().toString());
 
-            if (availableTime < 0) {
-                throw new Exception("E negativ !!!! NU E BINE :(");
+            if (priority < 0 || priority > 10) {
+                throw new Exception("NU E BINE :(");
             }
         }
 
-        return availableTime;
+        return priority;
     }
 
     @Override
     protected void setArgumentId() {
         if (getArguments() != null) {
-            String sessionId = SessionMaterialModFragmentArgs.fromBundle(getArguments()).getSessionId();
-            String materialId = SessionMaterialModFragmentArgs.fromBundle(getArguments()).getMaterialId();
+            String sessionId = SessionTaskModFragmentArgs.fromBundle(getArguments()).getSessionId();
+            String taskId = SessionTaskModFragmentArgs.fromBundle(getArguments()).getTaskId();
 
             if (sessionId != null) {
                 mSessionId = Long.parseLong(sessionId);
             }
 
-            if (materialId != null) {
-                mMaterialId = Long.parseLong(materialId);
+            if (taskId != null) {
+                mTaskId = Long.parseLong(taskId);
             }
 
-            if (mSessionId != null && mMaterialId != null) {
-                vm.getSessionMaterialByIds(mSessionId, mMaterialId).observe(this, sessionMaterial -> {
+            if (mSessionId != null && mTaskId != null) {
+                vm.getSessionTaskByIds(mSessionId, mTaskId).observe(this, sessionMaterial -> {
                     if (sessionMaterial != null) {
                         mSessionLinearLayout.setVisibility(View.GONE);
-                        mMaterialLinearLayout.setVisibility(View.GONE);
+                        mTaskLinearLayout.setVisibility(View.GONE);
                         mStartDateTextInputEditText.setText(new SimpleDateFormat(Utils.DATE_FORMAT, Locale.ENGLISH).format(sessionMaterial.getInitialDate()));
-                        mPrimaryKeyTextView.setText(String.format(Locale.ENGLISH, "PRIMARY KEY: [sessionId = '%d', materialId = '%d']", mSessionId, mMaterialId));
-                        mAvailableTimeTextInputEditText.setText(sessionMaterial.getAvailableTime() == null ? "" : String.format(Locale.ENGLISH, "%d", sessionMaterial.getAvailableTime()));
+                        mPrimaryKeyTextView.setText(String.format(Locale.ENGLISH, "PRIMARY KEY: [sessionId = '%d', taskId = '%d']", mSessionId, mTaskId));
+                        mPriorityTextInputEditText.setText(sessionMaterial.getPriority() == null ? "" : String.format(Locale.ENGLISH, "%d", sessionMaterial.getPriority()));
                     }
                 });
             }
@@ -159,11 +163,11 @@ public class SessionMaterialModFragment extends ModFragment {
     @Override
     protected void initViews(View itemView) {
         mSessionSpinner = itemView.findViewById(R.id.first_spinner);
-        mMaterialSpinner = itemView.findViewById(R.id.second_spinner);
+        mTaskSpinner = itemView.findViewById(R.id.second_spinner);
         mSessionLinearLayout = itemView.findViewById(R.id.first_linear_layout);
         mPrimaryKeyTextView = itemView.findViewById(R.id.primary_key_text_view);
-        mMaterialLinearLayout = itemView.findViewById(R.id.second_linear_layout);
+        mTaskLinearLayout = itemView.findViewById(R.id.second_linear_layout);
         mStartDateTextInputEditText = itemView.findViewById(R.id.first_text_input_edit_text);
-        mAvailableTimeTextInputEditText = itemView.findViewById(R.id.second_text_input_edit_text);
+        mPriorityTextInputEditText = itemView.findViewById(R.id.second_text_input_edit_text);
     }
 }

@@ -66,4 +66,6 @@
     <string name="insert_sessions_materials">O: Introduceti timpul valabil accesarii unui material</string>
     <string name="pick_session">Alegeti o sedinta:</string>
     <string name="pick_material">Alegeti un material:</string>
+    <string name="pick_task">Alegeti o sarcina:</string>
+    <string name="insert_priority">O: Introduceti nivelul de prioritate (0 – 10)</string>
 </resources>
