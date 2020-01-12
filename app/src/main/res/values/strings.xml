@@ -57,4 +57,13 @@
     <string name="task_time_hint">O: Introduceti un timp estimativ.</string>
     <string name="task_desc_hint">Introduceti o scurta descriere</string>
     <string name="sarcina">Sarcina</string>
+    <string name="session">Sedință</string>
+    <string name="insert_start_date">Introduceti data de incepere</string>
+    <string name="session_discussion">Introduceti discutia din cadrul sedintei</string>
+    <string name="pick_problem">Alegeti o problema:</string>
+    <string name="pick_location">Alegeti o locatie:</string>
+    <string name="ata_at_la">ATAȘAT LA</string>
+    <string name="insert_sessions_materials">O: Introduceti timpul valabil accesarii unui material</string>
+    <string name="pick_session">Alegeti o sedinta:</string>
+    <string name="pick_material">Alegeti un material:</string>
 </resources>

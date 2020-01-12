@@ -129,7 +129,7 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
 
             db.execSQL("DROP TABLE materiale");
             db.execSQL("CREATE TABLE \"materiale\" (\n" +
-                    "\t\"timp_estimat\"\tINTEGER,\n" +
+                    "\t\"timp_estimat\"\tINTEGER CHECK(timp_estimat >= 0),\n" +
                     "\t\"rezumat\"\tTEXT,\n" +
                     "\t\"url_imagine\"\tTEXT,\n" +
                     "\t\"url_sursa\"\tTEXT NOT NULL,\n" +
@@ -193,7 +193,7 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
 
             db.execSQL("DROP TABLE atasate_la");
             db.execSQL("CREATE TABLE \"atasate_la\" (\n" +
-                    "\t\"timp_disponibil\"\tINTEGER,\n" +
+                    "\t\"timp_disponibil\"\tINTEGER CHECK(timp_disponibil >= 0),\n" +
                     "\t\"data_initiala\"\tINTEGER NOT NULL,\n" +
                     "\t\"id_sedinta\"\tINTEGER NOT NULL,\n" +
                     "\t\"id_material\"\tINTEGER NOT NULL,\n" +
@@ -272,8 +272,8 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
                     ");");
             db.execSQL("CREATE TRIGGER IF NOT EXISTS user_satisfies_role " +
                     "BEFORE UPDATE ON utilizatori " +
-                    "WHEN (EXISTS(SELECT id_coach FROM probleme WHERE NEW.nume_utilizator = id_coach) AND LOWER(NEW.id_rol) NOT LIKE '%coach%')" +
-                    "OR (EXISTS(SELECT id_client FROM probleme WHERE NEW.nume_utilizator = id_client) AND LOWER(NEW.id_rol) NOT LIKE '%client%')" +
+                    "WHEN ((SELECT COUNT(*) FROM probleme WHERE NEW.nume_utilizator = id_coach) > 0 AND LOWER(NEW.id_rol) NOT LIKE '%coach%')" +
+                    "OR ((SELECT COUNT(*) FROM probleme WHERE NEW.nume_utilizator = id_client) > 0 AND LOWER(NEW.id_rol) NOT LIKE '%client%')" +
                     "BEGIN SELECT RAISE(FAIL, 'utilizatorul nu isi poate modifica rolul !!'); END;");
 
             databaseWriterExecutor.execute(() -> {

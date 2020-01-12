@@ -19,8 +19,11 @@ import com.faculty.fusedbloxxer.coachingapp.R;
 import com.faculty.fusedbloxxer.coachingapp.core.ModFragment;
 import com.faculty.fusedbloxxer.coachingapp.databinding.TaskHistoryModLayoutBinding;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
+import com.faculty.fusedbloxxer.coachingapp.utilities.Utils;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class TaskHistoryModFragment extends ModFragment {
@@ -80,7 +83,7 @@ public class TaskHistoryModFragment extends ModFragment {
                 vm.getTaskHistoryByTaskIdAndDate(mTaskId, mDate).observe(this, taskHistory -> {
                             if (taskHistory != null) {
                                 mIdTextView.setText(String.format("ID: %d", mTaskId));
-                                mDateTextView.setText(date);
+                                mDateTextView.setText(new SimpleDateFormat(Utils.DATE_FORMAT, Locale.ENGLISH).format(mDate));
 
                                 if (taskHistory.getConfidenceRating() != null) {
                                     mRatingBar.setRating(taskHistory.getConfidenceRating());

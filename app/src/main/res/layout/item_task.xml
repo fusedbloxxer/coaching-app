@@ -81,7 +81,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:elevation="4dp"
             app:cardBackgroundColor="#FDE74C"
             app:cardCornerRadius="8dp">
@@ -93,7 +94,6 @@
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:padding="10dp"
-
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 tools:text="Timpul estimat este 3 minute." />

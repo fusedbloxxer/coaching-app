@@ -13,10 +13,12 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Material;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Problem;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Role;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Session;
+import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionMaterial;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Task;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
 
+import java.util.Date;
 import java.util.List;
 
 public class PersonalDevelopmentViewModel extends AndroidViewModel {
@@ -485,5 +487,97 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void updateTasks(Task... tasks) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.taskDao().update(tasks));
+    }
+
+    public LiveData<List<Session>> getAllSessions() {
+        return personalDevelopmentDatabase.sessionDao().getAllSessions();
+    }
+
+    public LiveData<List<Session>> getSessionsSotedBySessionIdAsc() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsSotedBySessionIdAsc();
+    }
+
+    public LiveData<List<Session>> getSessionsSotedBySessionIdDesc() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsSotedBySessionIdDesc();
+    }
+
+    public LiveData<List<Session>> getSessionsSotedByStartDateAsc() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsSotedByStartDateAsc();
+    }
+
+    public LiveData<List<Session>> getSessionsSotedByStartDateDesc() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsSotedByStartDateDesc();
+    }
+
+    public LiveData<List<Session>> getSessionsSotedByDiscussionLenAsc() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsSotedByDiscussionLenAsc();
+    }
+
+    public LiveData<List<Session>> getSessionsSotedByDiscussionLenDesc() {
+        return personalDevelopmentDatabase.sessionDao().getSessionsSotedByDiscussionLenDesc();
+    }
+
+    public LiveData<Session> getSessionWithId(@NonNull Long sessionId) {
+        return personalDevelopmentDatabase.sessionDao().getSessionWithId(sessionId);
+    }
+
+    public void deleteSessionWithId(@NonNull Long sessionId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionDao().deleteSessionWithId(sessionId));
+    }
+
+    public void insertSessions(Session... sessions) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionDao().insert(sessions));
+    }
+
+    public void updateSessions(Session... sessions) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionDao().update(sessions));
+    }
+
+
+    public LiveData<List<SessionMaterial>> getAllSessionsMaterials() {
+        return personalDevelopmentDatabase.sessionMaterialDao().getAllSessionsMaterials();
+    }
+
+    public LiveData<List<SessionMaterial>> getSessionsMaterialsSortedByStartDateAsc() {
+        return personalDevelopmentDatabase.sessionMaterialDao().getSessionsMaterialsSortedByStartDateAsc();
+    }
+
+    public LiveData<List<SessionMaterial>> getSessionsMaterialsSortedByStartDateDesc() {
+        return personalDevelopmentDatabase.sessionMaterialDao().getSessionsMaterialsSortedByStartDateDesc();
+    }
+
+    public LiveData<List<SessionMaterial>> getSessionsMaterialsSortedByTimeAsc() {
+        return personalDevelopmentDatabase.sessionMaterialDao().getSessionsMaterialsSortedByTimeAsc();
+    }
+
+    public LiveData<List<SessionMaterial>> getSessionsMaterialsSortedByTimeDesc() {
+        return personalDevelopmentDatabase.sessionMaterialDao().getSessionsMaterialsSortedByTimeDesc();
+    }
+
+    public LiveData<SessionMaterial> getSessionMaterialByIds(@NonNull Long sessionId, @NonNull Long materialId) {
+        return personalDevelopmentDatabase.sessionMaterialDao().getSessionMaterialByIds(sessionId, materialId);
+    }
+
+    public void deleteSessionMaterialByIds(@NonNull Long sessionId, @NonNull Long materialId) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionMaterialDao().deleteSessionMaterialByIds(sessionId, materialId));
+    }
+
+    public void insertSessionsMaterials(SessionMaterial... sessionMaterials) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionMaterialDao().insert(sessionMaterials));
+    }
+
+    public void updateSessionsMaterials(SessionMaterial... sessionMaterials) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionMaterialDao().update(sessionMaterials));
+    }
+
+    public void updateSessionMaterialByIds(@NonNull Long sessionId, @NonNull Long materialId, @NonNull Date initialDate, Long availableTime) {
+        PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
+                personalDevelopmentDatabase.sessionMaterialDao().updateSessionMaterialByIds(sessionId, materialId, initialDate, availableTime));
     }
 }

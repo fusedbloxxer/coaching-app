@@ -36,9 +36,16 @@ public class MaterialModFragment extends ModFragment {
         if (Utils.checkEditTexts(mSourceEditText, mTitleEditText)) {
             try {
 
+                Long time = null;
+
+                if (mTimeEditText.getText().length() > 0 && (time = Long.parseLong(mTimeEditText.getText().toString())) < 0) {
+                    mTimeEditText.setError("Timpul estimat nu poate fi negativ !");
+                    return;
+                }
+
                 final Material material = new Material(
-                        mTimeEditText.getText().length() > 0 ? Long.parseLong(mTimeEditText.getText().toString()) : null,
-                        mSummaryEditText.getText().toString(),
+                        time,
+                        mSummaryEditText.getText().length() > 0 ? mSummaryEditText.getText().toString() : null,
                         mImageEditText.getText().length() > 0 ? mImageEditText.getText().toString() : null,
                         mSourceEditText.getText().toString(),
                         mTitleEditText.getText().toString()
