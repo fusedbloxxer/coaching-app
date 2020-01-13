@@ -40,13 +40,13 @@ public class BestCoachesFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View itemView = inflater.inflate(R.layout.coaches_layout, container, false);
+        View itemView = inflater.inflate(R.layout.simple_recycler_view_layout, container, false);
         initViews(itemView);
         return itemView;
     }
 
     private void initViews(View itemView) {
-        recyclerView = itemView.findViewById(R.id.coach_recycler_view);
+        recyclerView = itemView.findViewById(R.id.recycler_view);
     }
 
     @Override
@@ -62,16 +62,10 @@ public class BestCoachesFragment extends BaseFragment {
                                 bestCoachesAdapter.setCoachWithScoresList(coachWithScores)));
     }
 
-    private void setObserver(Float avgScore, Float maxScore) {
-        vm.groupCoachesHaving(avgScore, maxScore)
-                .observe(this, coachWithScores ->
-                        bestCoachesAdapter.setCoachWithScoresList(coachWithScores));
-    }
-
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         menu.clear();
-        inflater.inflate(R.menu.coaches_menu, menu);
+        inflater.inflate(R.menu.simple_filter_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

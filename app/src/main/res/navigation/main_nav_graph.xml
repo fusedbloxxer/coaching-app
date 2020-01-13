@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/bestCoachesFragment">
+    app:startDestination="@id/urgent_sessions">
 
     <fragment
         android:id="@id/roluri"
@@ -303,8 +303,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/bestCoachesFragment"
+        android:id="@id/best_coaches"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.bestcoaches.BestCoachesFragment"
-        android:label="BestCoachesFragment" />
+        android:label="Cei mai buni coaches" />
+
+    <fragment
+        android:id="@id/urgent_sessions"
+        android:name="com.faculty.fusedbloxxer.coachingapp.home.urgentsessions.UrgentSessionsFragment"
+        android:label="Sesiuni urgente"
+        tools:layout="@layout/simple_recycler_view_layout" />
 
 </navigation>

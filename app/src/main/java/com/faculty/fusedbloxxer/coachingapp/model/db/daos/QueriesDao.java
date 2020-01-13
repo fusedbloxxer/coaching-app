@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 import com.faculty.fusedbloxxer.coachingapp.model.db.containers.CoachWithScores;
+import com.faculty.fusedbloxxer.coachingapp.model.db.containers.UrgentSession;
 
 import java.util.List;
 
@@ -29,4 +30,18 @@ public interface QueriesDao {
             "AND IFNULL(MAX(puncte_evaluare), 0) >= :maxScore\n" +
             "ORDER BY IFNULL(AVG(medie_puncte), 0) DESC, IFNULL(MAX(medie_puncte), 0) DESC;")
     LiveData<List<CoachWithScores>> groupCoachesHaving(@NonNull Float avgScore, @NonNull Float maxScore);
+
+    @Query("SELECT id_client AS username, probleme.titlu AS problemTitle, sarcini.titlu AS sessionTitle, \n" +
+            "\tsarcini.descriere AS sessionDescription, puncte_premiu AS rewardPoints, prioritate AS priority,\n" +
+            "\ttimp_estimat AS estimatedTime, url_imagine AS imageUrl, strada AS street\n" +
+            "FROM probleme\n" +
+            "JOIN sedinte USING(id_problema)\n" +
+            "JOIN locatii USING(id_locatie)\n" +
+            "JOIN includ USING(id_sedinta)\n" +
+            "JOIN sarcini USING(id_sarcina)\n" +
+            "WHERE puncte_premiu >= :rewardPoints \n" +
+            "AND prioritate >= :priority \n" +
+            "AND timp_estimat IS NOT NULL\n" +
+            "ORDER BY id_client ASC, prioritate DESC, timp_estimat ASC, puncte_premiu DESC;")
+    LiveData<List<UrgentSession>> getUrgentSessionsWhere(@NonNull Long rewardPoints, @NonNull Long priority);
 }
