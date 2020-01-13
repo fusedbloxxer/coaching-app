@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.faculty.fusedbloxxer.coachingapp.model.db.containers.CoachWithScores;
 import com.faculty.fusedbloxxer.coachingapp.model.db.database.PersonalDevelopmentDatabase;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Feedback;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Location;
@@ -618,5 +619,9 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
     public void updateSessionsTasks(SessionTask... sessionTasks) {
         PersonalDevelopmentDatabase.databaseWriterExecutor.execute(() ->
                 personalDevelopmentDatabase.sessionTaskDao().update(sessionTasks));
+    }
+
+    public LiveData<List<CoachWithScores>> groupCoachesHaving(@NonNull Float avgScore, @NonNull Float maxScore) {
+        return personalDevelopmentDatabase.queriesDao().groupCoachesHaving(avgScore, maxScore);
     }
 }

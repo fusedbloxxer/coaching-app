@@ -6,7 +6,9 @@
     <item android:title="@string/tabele">
 
         <group android:checkableBehavior="single">
-
+            <item
+                android:id="@+id/best_coaches"
+                android:title="Cei mai buni coach" />
             <item
                 android:id="@+id/roluri"
                 android:title="@string/roluri" />

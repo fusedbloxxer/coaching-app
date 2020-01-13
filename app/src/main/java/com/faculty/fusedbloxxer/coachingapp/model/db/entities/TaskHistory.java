@@ -137,18 +137,18 @@ public class TaskHistory {
                             new TaskHistory("A fost cam epuizant...", (long) randomNumber(5), 1L, timestamp()),
                             new TaskHistory("A fost cam epuizant...", (long) randomNumber(5), 1L, timestamp()),
                             new TaskHistory("A fost cam epuizant...", (long) randomNumber(5), 1L, timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
-                            new TaskHistory(null, (long) randomNumber(5), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp())
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp()),
+                            new TaskHistory(null, (long) randomNumber(11), 1 + (long) randomNumber(Task.getFakeTasks().length), timestamp())
                     };
                 }
             }

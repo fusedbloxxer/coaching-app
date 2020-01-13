@@ -31,11 +31,11 @@ public class SessionTaskViewHolder extends RecyclerView.ViewHolder {
 
     private void initViews(View itemView) {
         mCardView = itemView.findViewById(R.id.sessions_tasks__card_view);
-        mDateTextView = itemView.findViewById(R.id.sessions_tasks_start_date);
-        mTaskIdTextView = itemView.findViewById(R.id.sessions_tasks_id_task_text_view);
+        mDateTextView = itemView.findViewById(R.id.best_coach_name_text_view);
+        mTaskIdTextView = itemView.findViewById(R.id.best_coach_avg_score_text_view);
         mPriorityCardView = itemView.findViewById(R.id.sessions_tasks_priority_card_view);
         mPriorityTextView = itemView.findViewById(R.id.sessions_tasks_priority_text_view);
-        mSessionIdTextView = itemView.findViewById(R.id.sessions_tasks_id_session_text_view);
+        mSessionIdTextView = itemView.findViewById(R.id.best_coach_max_score_text_view);
     }
 
     public void setDate(Date date) {

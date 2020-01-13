@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/roluri">
+    app:startDestination="@id/bestCoachesFragment">
 
     <fragment
         android:id="@id/roluri"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.roles.RolesFragment"
-        android:label="Roles">
+        android:label="Roles"
+        tools:layout="@layout/table_list_fragment">
         <action
             android:id="@+id/action_roluri_to_roleModFragment"
             app:destination="@id/roleModFragment"
@@ -47,7 +48,8 @@
     <fragment
         android:id="@+id/userModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.users.UserModFragment"
-        android:label="Utilizator">
+        android:label="Utilizator"
+        tools:layout="@layout/user_mod_layout">
         <argument
             android:name="username"
             android:defaultValue="@null"
@@ -72,7 +74,8 @@
     <fragment
         android:id="@+id/problemModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.problems.ProblemModFragment"
-        android:label="Problema">
+        android:label="Problema"
+        tools:layout="@layout/problem_mod_layout">
         <argument
             android:name="problemId"
             android:defaultValue="@null"
@@ -97,7 +100,8 @@
     <fragment
         android:id="@+id/locationModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.locations.LocationModFragment"
-        android:label="Locatie">
+        android:label="Locatie"
+        tools:layout="@layout/location_mod_layout">
         <argument
             android:name="locationId"
             android:defaultValue="@null"
@@ -120,7 +124,8 @@
     <fragment
         android:id="@+id/feedbackModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.feedbacks.FeedbackModFragment"
-        android:label="Fragment">
+        android:label="Fragment"
+        tools:layout="@layout/feedback_mod_layout">
         <argument
             android:name="feedbackId"
             android:defaultValue="@null"
@@ -143,7 +148,8 @@
     <fragment
         android:id="@+id/materialModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.materials.MaterialModFragment"
-        android:label="Material">
+        android:label="Material"
+        tools:layout="@layout/material_mod_layout">
         <argument
             android:name="materialId"
             android:defaultValue="@null"
@@ -167,7 +173,8 @@
     <fragment
         android:id="@+id/taskHistoryModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.taskshistory.TaskHistoryModFragment"
-        android:label="Istoric sarcina">
+        android:label="Istoric sarcina"
+        tools:layout="@layout/task_history_mod_layout">
         <argument
             android:name="taskId"
             android:defaultValue="@null"
@@ -197,7 +204,8 @@
     <fragment
         android:id="@+id/modFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.tasks.TaskModFragment"
-        android:label="Sarcina">
+        android:label="Sarcina"
+        tools:layout="@layout/task_mod_layout">
         <argument
             android:name="taskId"
             android:defaultValue="@null"
@@ -222,7 +230,8 @@
     <fragment
         android:id="@+id/sessionModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.sessions.SessionModFragment"
-        android:label="Ședință">
+        android:label="Ședință"
+        tools:layout="@layout/session_mod_layout">
         <argument
             android:name="sessionId"
             android:defaultValue="@null"
@@ -247,7 +256,8 @@
     <fragment
         android:id="@+id/sessionMaterialModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.sessionsmaterials.SessionMaterialModFragment"
-        android:label="Atașat la">
+        android:label="Atașat la"
+        tools:layout="@layout/sessions_materials_mod_layout">
 
         <argument
             android:name="sessionId"
@@ -278,7 +288,8 @@
     <fragment
         android:id="@+id/sessionTaskModFragment"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.sessionstasks.SessionTaskModFragment"
-        android:label="Includ">
+        android:label="Includ"
+        tools:layout="@layout/sessions_tasks_mod_layout">
         <argument
             android:name="sessionId"
             android:defaultValue="@null"
@@ -290,5 +301,10 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/bestCoachesFragment"
+        android:name="com.faculty.fusedbloxxer.coachingapp.home.bestcoaches.BestCoachesFragment"
+        android:label="BestCoachesFragment" />
 
 </navigation>

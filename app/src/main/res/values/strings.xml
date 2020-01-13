@@ -68,4 +68,7 @@
     <string name="pick_material">Alegeti un material:</string>
     <string name="pick_task">Alegeti o sarcina:</string>
     <string name="insert_priority">O: Introduceti nivelul de prioritate (0 – 10)</string>
+    <string name="filter">Filtru</string>
+    <string name="avg_score">Scorul mediu sa fie mai mare sau egal cu</string>
+    <string name="max_grade">Nota maxima sa fie mai mare sau egala cu</string>
 </resources>

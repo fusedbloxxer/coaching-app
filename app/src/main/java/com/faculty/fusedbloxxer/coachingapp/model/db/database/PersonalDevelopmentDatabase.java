@@ -14,6 +14,7 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.daos.FeedbackDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.LocationDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.MaterialDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.ProblemDao;
+import com.faculty.fusedbloxxer.coachingapp.model.db.daos.QueriesDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.RoleDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.SessionDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.SessionMaterialDao;
@@ -60,6 +61,8 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
     public abstract TaskDao taskDao();
 
     public abstract UserDao userDao();
+
+    public abstract QueriesDao queriesDao();
 
     public abstract ProblemDao problemDao();
 
