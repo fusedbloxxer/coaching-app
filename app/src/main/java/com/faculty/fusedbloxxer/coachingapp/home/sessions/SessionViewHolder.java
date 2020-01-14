@@ -50,7 +50,7 @@ public class SessionViewHolder extends RecyclerView.ViewHolder {
     public void setSessionId(Long sessionId) {
         if (sessionId != null) {
             mSessionIdTextView.setTag(sessionId);
-            mSessionIdTextView.setText(String.format(Locale.ENGLISH, "Id sesiune: %d", sessionId));
+            mSessionIdTextView.setText(String.format(Locale.ENGLISH, "Id sedinta: %d", sessionId));
         }
     }
 

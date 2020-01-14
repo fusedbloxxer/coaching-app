@@ -120,7 +120,7 @@ public class SessionModFragment extends ModFragment {
                         mFirstTextview.setText(String.format(Locale.ENGLISH, "Alegeti o problema:\n(Actual: %d)", session.getProblemId()));
 
                         if (session.getLocationId() != null) {
-                            mFirstTextview.setText(String.format(Locale.ENGLISH, "Alegeti o locatie:\n(Actual: %d)", session.getLocationId()));
+                            mSecondTextView.setText(String.format(Locale.ENGLISH, "Alegeti o locatie:\n(Actual: %d)", session.getLocationId()));
                         }
                     }
                 });
