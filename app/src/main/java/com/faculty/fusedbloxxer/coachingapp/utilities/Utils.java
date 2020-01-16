@@ -6,6 +6,8 @@ import android.widget.EditText;
 
 import com.faculty.fusedbloxxer.coachingapp.home.INavigable;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -38,6 +40,11 @@ public class Utils {
             }
         }
         return true;
+    }
+
+    @NotNull
+    public static String capitalize(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
     public static String[] getItemOptions() {

@@ -22,6 +22,7 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.daos.SessionTaskDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.TaskDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.TaskHistoryDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.daos.UserDao;
+import com.faculty.fusedbloxxer.coachingapp.model.db.daos.ViewsDao;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Feedback;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Location;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Material;
@@ -33,6 +34,8 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionTask;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Task;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
+import com.faculty.fusedbloxxer.coachingapp.model.db.views.SpecialTask;
+import com.faculty.fusedbloxxer.coachingapp.model.db.views.UserWithRole;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -44,9 +47,10 @@ import java.util.concurrent.Executors;
                 SessionMaterial.class, SessionTask.class,
                 Problem.class, Session.class
         },
+        views = {SpecialTask.class, UserWithRole.class},
         version = 1
 )
-@TypeConverters({DateConverter.class})
+@TypeConverters(DateConverter.class)
 public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriterExecutor =
@@ -61,6 +65,8 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
     public abstract TaskDao taskDao();
 
     public abstract UserDao userDao();
+
+    public abstract ViewsDao viewsDao();
 
     public abstract QueriesDao queriesDao();
 
@@ -278,6 +284,21 @@ public abstract class PersonalDevelopmentDatabase extends RoomDatabase {
                     "WHEN ((SELECT COUNT(*) FROM probleme WHERE NEW.nume_utilizator = id_coach) > 0 AND LOWER(NEW.id_rol) NOT LIKE '%coach%')" +
                     "OR ((SELECT COUNT(*) FROM probleme WHERE NEW.nume_utilizator = id_client) > 0 AND LOWER(NEW.id_rol) NOT LIKE '%client%')" +
                     "BEGIN SELECT RAISE(FAIL, 'utilizatorul nu isi poate modifica rolul !!'); END;");
+
+//            db.execSQL("CREATE VIEW IF NOT EXISTS VIEW_SEDINTE_SPECIALE\n" +
+//                    "AS\n" +
+//                    "SELECT descriere AS description, UPPER(titlu) AS upperTitle, \n" +
+//                    "\t(CASE\n" +
+//                    "\t\tWHEN puncte_premiu * 2 > 100 THEN 100\n" +
+//                    "\t\tELSE puncte_premiu * 2\n" +
+//                    "\tEND) AS doubledRewards\n" +
+//                    "FROM sarcini;");
+//
+//            db.execSQL("CREATE VIEW IF NOT EXISTS VIEW_ROLURI_UTILIZATORI " +
+//                    "AS " +
+//                    "SELECT roluri.*, utilizatori.* " +
+//                    "FROM roluri " +
+//                    "JOIN utilizatori ON(roluri.id_rol = utilizatori.id_rol);");
 
             databaseWriterExecutor.execute(() -> {
                 INSTANCE.roleDao().insert(Role.getFakeRoles());

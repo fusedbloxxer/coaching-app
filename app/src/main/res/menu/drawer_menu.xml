@@ -6,12 +6,6 @@
     <item android:title="@string/tabele">
 
         <group android:checkableBehavior="single">
-            <item android:title="Sesiuni urgente"
-                android:id="@+id/urgent_sessions"
-                tools:ignore="HardcodedText" />
-            <item
-                android:id="@+id/best_coaches"
-                android:title="Cei mai buni coach" />
             <item
                 android:id="@+id/roluri"
                 android:title="@string/roluri" />
@@ -45,6 +39,22 @@
             <item
                 android:id="@+id/includ"
                 android:title="@string/includ" />
+            <item
+                android:id="@+id/urgent_sessions"
+                android:title="Sesiuni urgente"
+                tools:ignore="HardcodedText" />
+            <item
+                android:id="@+id/best_coaches"
+                android:title="Cei mai buni coach"
+                tools:ignore="HardcodedText" />
+            <item
+                android:id="@+id/users_with_roles"
+                android:title="Utilizatori cu roluri"
+                tools:ignore="HardcodedText" />
+            <item
+                android:id="@+id/special_tasks"
+                android:title="Sarcini speciale"
+                tools:ignore="HardcodedText" />
         </group>
     </item>
 </menu>

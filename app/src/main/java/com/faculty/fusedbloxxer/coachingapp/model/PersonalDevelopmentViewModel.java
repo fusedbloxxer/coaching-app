@@ -20,6 +20,8 @@ import com.faculty.fusedbloxxer.coachingapp.model.db.entities.SessionTask;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.Task;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.TaskHistory;
 import com.faculty.fusedbloxxer.coachingapp.model.db.entities.User;
+import com.faculty.fusedbloxxer.coachingapp.model.db.views.SpecialTask;
+import com.faculty.fusedbloxxer.coachingapp.model.db.views.UserWithRole;
 
 import java.util.Date;
 import java.util.List;
@@ -628,5 +630,13 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
 
     public LiveData<List<UrgentSession>> getUrgentSessionsWhere(@NonNull Long rewardPoints, @NonNull Long priority) {
         return personalDevelopmentDatabase.queriesDao().getUrgentSessionsWhere(rewardPoints, priority);
+    }
+
+    public LiveData<List<UserWithRole>> getUsersWithRoles() {
+        return personalDevelopmentDatabase.viewsDao().getUsersWithRoles();
+    }
+
+    public LiveData<List<SpecialTask>> getSpecialTasks() {
+        return personalDevelopmentDatabase.viewsDao().getSpecialTasks();
     }
 }

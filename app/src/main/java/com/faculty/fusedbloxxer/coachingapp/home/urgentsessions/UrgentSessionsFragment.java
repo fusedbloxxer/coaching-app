@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.faculty.fusedbloxxer.coachingapp.R;
 import com.faculty.fusedbloxxer.coachingapp.core.BaseFragment;
 import com.faculty.fusedbloxxer.coachingapp.model.PersonalDevelopmentViewModel;
-import com.faculty.fusedbloxxer.coachingapp.utilities.Pair;
 import com.faculty.fusedbloxxer.coachingapp.utilities.Utils;
 
 import java.util.Locale;
@@ -69,14 +67,13 @@ public class UrgentSessionsFragment extends BaseFragment {
 
         LifecycleOwner lifecycleOwner = this;
         getAlertDialog();
-        urgentViewModel.getRewardAndPriority().observe(this, new Observer<Pair<Long, Long>>() {
-                    @Override
-                    public void onChanged(Pair<Long, Long> rewardAndPriority) {
-                        priorityEditText.setText(String.format(Locale.ENGLISH, "%d", rewardAndPriority.getT2()));
-                        rewardPointsEditText.setText(String.format(Locale.ENGLISH, "%d", rewardAndPriority.getT1()));
-                        vm.getUrgentSessionsWhere(rewardAndPriority.getT1(), rewardAndPriority.getT2()).observe(lifecycleOwner,
-                                urgentSessions -> adapter.setUrgentSessions(urgentSessions));
-                    }
+        urgentViewModel.getRewardAndPriority().observe(this, rewardAndPriority -> {
+                    priorityEditText.setText(String.format(Locale.ENGLISH, "%d", rewardAndPriority.getT2()));
+
+                    rewardPointsEditText.setText(String.format(Locale.ENGLISH, "%d", rewardAndPriority.getT1()));
+
+                    vm.getUrgentSessionsWhere(rewardAndPriority.getT1(), rewardAndPriority.getT2()).observe(lifecycleOwner,
+                            urgentSessions -> adapter.setUrgentSessions(urgentSessions));
                 }
         );
     }

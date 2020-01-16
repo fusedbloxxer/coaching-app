@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/urgent_sessions">
+    app:startDestination="@id/roluri">
 
     <fragment
         android:id="@id/roluri"
@@ -311,6 +311,18 @@
         android:id="@id/urgent_sessions"
         android:name="com.faculty.fusedbloxxer.coachingapp.home.urgentsessions.UrgentSessionsFragment"
         android:label="Sesiuni urgente"
+        tools:layout="@layout/simple_recycler_view_layout" />
+
+    <fragment
+        android:id="@id/users_with_roles"
+        android:name="com.faculty.fusedbloxxer.coachingapp.home.userswithroles.UsersWithRolesFragment"
+        android:label="Utilizatori cu roluri"
+        tools:layout="@layout/simple_recycler_view_layout" />
+
+    <fragment
+        android:id="@id/special_tasks"
+        android:name="com.faculty.fusedbloxxer.coachingapp.home.specialtasks.SpecialTaskFragment"
+        android:label="Sarcini speciale"
         tools:layout="@layout/simple_recycler_view_layout" />
 
 </navigation>

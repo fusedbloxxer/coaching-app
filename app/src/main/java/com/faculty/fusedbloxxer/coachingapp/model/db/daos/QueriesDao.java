@@ -12,6 +12,7 @@ import java.util.List;
 
 @Dao
 public interface QueriesDao {
+
     @Query("SELECT nume_utilizator AS coachName, MAX(puncte_evaluare) AS maxScore, AVG(medie_puncte) AS avgScore\n" +
             "FROM utilizatori\n" +
             "LEFT JOIN probleme ON(utilizatori.nume_utilizator = probleme.id_coach)\n" +
@@ -44,4 +45,8 @@ public interface QueriesDao {
             "AND timp_estimat IS NOT NULL\n" +
             "ORDER BY id_client ASC, prioritate DESC, timp_estimat ASC, puncte_premiu DESC;")
     LiveData<List<UrgentSession>> getUrgentSessionsWhere(@NonNull Long rewardPoints, @NonNull Long priority);
+
+//    @Query("INSERT INTO UserWithRole(roleId, username, firstName, lastName, password) VALUES(:roleId, :username, :firstName, :lastName, :password)")
+//    void insert(@NonNull String roleId, @NonNull String username, @NonNull String firstName, @NonNull String lastName, @NonNull String password);
+
 }
