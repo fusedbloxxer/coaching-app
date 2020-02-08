@@ -29,8 +29,8 @@ public class UsersWithRolesFragment extends BaseFragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setAdapter(userWithRoleAdapter);
 
-        ViewModelProviders.of(this).get(PersonalDevelopmentViewModel.class)
-                .getUsersWithRoles()
-                .observe(this, userWithRoleAdapter::setUserWithRoleList);
+//        ViewModelProviders.of(this).get(PersonalDevelopmentViewModel.class)
+//                .getUsersWithRoles()
+//                .observe(this, userWithRoleAdapter::setUserWithRoleList);
     }
 }

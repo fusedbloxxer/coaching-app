@@ -632,11 +632,11 @@ public class PersonalDevelopmentViewModel extends AndroidViewModel {
         return personalDevelopmentDatabase.queriesDao().getUrgentSessionsWhere(rewardPoints, priority);
     }
 
-    public LiveData<List<UserWithRole>> getUsersWithRoles() {
-        return personalDevelopmentDatabase.viewsDao().getUsersWithRoles();
-    }
-
-    public LiveData<List<SpecialTask>> getSpecialTasks() {
-        return personalDevelopmentDatabase.viewsDao().getSpecialTasks();
-    }
+//    public LiveData<List<UserWithRole>> getUsersWithRoles() {
+//        return personalDevelopmentDatabase.viewsDao().getUsersWithRoles();
+//    }
+//
+//    public LiveData<List<SpecialTask>> getSpecialTasks() {
+//        return personalDevelopmentDatabase.viewsDao().getSpecialTasks();
+//    }
 }

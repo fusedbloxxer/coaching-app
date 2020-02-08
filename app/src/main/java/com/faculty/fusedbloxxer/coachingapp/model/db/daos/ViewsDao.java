@@ -11,9 +11,9 @@ import java.util.List;
 
 @Dao
 public interface ViewsDao {
-    @Query("SELECT * FROM UserWithRole")
-    LiveData<List<UserWithRole>> getUsersWithRoles();
-
-    @Query("SELECT * FROM SpecialTask")
-    LiveData<List<SpecialTask>> getSpecialTasks();
+//    @Query("SELECT * FROM UserWithRole")
+//    LiveData<List<UserWithRole>> getUsersWithRoles();
+//
+//    @Query("SELECT * FROM SpecialTask")
+//    LiveData<List<SpecialTask>> getSpecialTasks();
 }
