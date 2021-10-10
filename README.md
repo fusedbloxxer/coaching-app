@@ -1,2 +1,2 @@
-# coachingapp
+# coaching-app
 Faculty project
